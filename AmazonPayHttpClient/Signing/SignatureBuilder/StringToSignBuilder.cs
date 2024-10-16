@@ -19,6 +19,7 @@ internal sealed class StringToSignBuilder
 
 		var stringToSignBuilder = new StringBuilder();
 		
+		// TODO: I think this is fixed length string
 		stringToSignBuilder.
 			Append(AmazonSignatureAlgorithm).
 			Append(LineSeparator).

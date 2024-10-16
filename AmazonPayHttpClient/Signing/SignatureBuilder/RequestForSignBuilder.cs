@@ -63,23 +63,10 @@ internal sealed class RequestForSignBuilder
 
 		return builder;
 	}
-	
-	private string Hash(string str)
-	{
-		var hashValue = new StringBuilder();
-		
-		var bytes = _hash.Hash(str);
-		foreach (Byte b in bytes)
-		{
-			hashValue.Append(b.ToString("x2"));
-		}
-
-		return hashValue.ToString();
-	}
 
 	private string HashBody()
 	{
-		return Hash(_body);
+		return  _hash.FormattedHash(_body);
 	}
 	
 }
