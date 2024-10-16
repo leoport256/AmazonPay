@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\Pay.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\..\AmazonPayHttpClient.Contracts.Newtonsoft\AmazonPayHttpClient.Contracts.Newtonsoft.csproj" />
+      <ProjectReference Include="..\..\..\..\..\AmazonPayHttpClient.Refit.Newtonsoft\AmazonPayHttpClient.Refit.Newtonsoft.csproj" />
+      <ProjectReference Include="..\..\..\..\AmazonPayConfigurationKeyProviders.ServiceCollections\AmazonPayConfigurationKeyProviders.ServiceCollections.csproj" />
+      <ProjectReference Include="..\..\..\..\AmazonPayConfigurationKeyProviders\AmazonPayConfigurationKeyProviders.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,126 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayHttpClient", "AmazonPayHttpClient\AmazonPayHttpClient.csproj", "{7F3C85FA-6323-4436-9F08-8AD744E1A02B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayHttpClient.Contracts", "AmazonPayHttpClient.Contracts\AmazonPayHttpClient.Contracts.csproj", "{B81DFB99-9B25-4E1F-8D18-E9C7D7D66AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayHttpClient.Refit", "AmazonPayHttpClient.Refit\AmazonPayHttpClient.Refit.csproj", "{625A6710-0618-4E8B-A987-F9AF73EBFD74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Newtonsoft", "Newtonsoft", "{C4CDF4E3-88FB-45CF-B6A5-7D675A1C028C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayHttpClient.Contracts.Newtonsoft", "AmazonPayHttpClient.Contracts.Newtonsoft\AmazonPayHttpClient.Contracts.Newtonsoft.csproj", "{F3538D94-0506-4636-9820-8D41AD261E51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayHttpClient.Refit.Newtonsoft", "AmazonPayHttpClient.Refit.Newtonsoft\AmazonPayHttpClient.Refit.Newtonsoft.csproj", "{FC0D6F21-884F-4071-BF99-3077B8088F26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".samples", ".samples", "{FC68A264-00CB-4824-AA39-68C1367675C6}"
+	ProjectSection(SolutionItems) = preProject
+		.samples\sample.pem = .samples\sample.pem
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet8", "dotnet8", "{47983378-4980-4FC8-9F09-DEFBF22C9319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.dotnet8.GetCheckoutSession", ".samples\dotnet8\AmazonPay.Samples.dotnet8.GetCheckoutSession\AmazonPay.Samples.dotnet8.GetCheckoutSession.csproj", "{7EEDB884-AC5D-4A5D-9928-0A762D7667F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Newtonsoft", "Newtonsoft", "{24A33665-87DA-40E4-869B-C82D62AD953D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refit", "Refit", "{1A6A5B40-8F2C-434B-87C2-6E6CE122D995}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refit", "Refit", "{DFEE733A-ECB0-4EDB-9533-7C125DD5D7EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Refit.GetCheckoutSession", ".samples\dotnet8\Refit\AmazonPay.Samples.Dotnet8.Refit.GetCheckoutSession\AmazonPay.Samples.Dotnet8.Refit.GetCheckoutSession.csproj", "{4527F71F-D8E1-4816-B75B-FC65712281A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Newtonsoft.GetCheckoutSession", ".samples\dotnet8\Newtonsoft\AmazonPay.Samples.Dotnet8.Newtonsoft.GetCheckoutSession\AmazonPay.Samples.Dotnet8.Newtonsoft.GetCheckoutSession.csproj", "{34F016EF-DFEE-4C7D-88F0-172FEA0E6946}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.GetCheckoutSession", ".samples\dotnet8\Newtonsoft\Refit\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.GetCheckoutSession\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.GetCheckoutSession.csproj", "{381E67C7-D7D7-42F4-91B3-2D09B954AF62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Refit.InitCheckoutSession", ".samples\dotnet8\Refit\AmazonPay.Samples.Dotnet8.Refit.InitCheckoutSession\AmazonPay.Samples.Dotnet8.Refit.InitCheckoutSession.csproj", "{EE3FDBD9-45BA-49E6-A739-20EEC5124424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayConfigurationKeyProviders", ".samples\AmazonPayConfigurationKeyProviders\AmazonPayConfigurationKeyProviders.csproj", "{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayConfigurationKeyProviders.ServiceCollections", ".samples\AmazonPayConfigurationKeyProviders.ServiceCollections\AmazonPayConfigurationKeyProviders.ServiceCollections.csproj", "{8783DB9B-F96C-4CF6-BC70-8C68497A1231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession", ".samples\dotnet8\Newtonsoft\Refit\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession.csproj", "{337EE890-F767-4B3D-927C-6B627A960A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeserializeTest", ".samples\dotnet8\Newtonsoft\DeserializeTest\DeserializeTest.csproj", "{31507314-FE38-412B-A821-A59FC70DBD07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F3C85FA-6323-4436-9F08-8AD744E1A02B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3C85FA-6323-4436-9F08-8AD744E1A02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3C85FA-6323-4436-9F08-8AD744E1A02B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3C85FA-6323-4436-9F08-8AD744E1A02B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81DFB99-9B25-4E1F-8D18-E9C7D7D66AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81DFB99-9B25-4E1F-8D18-E9C7D7D66AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81DFB99-9B25-4E1F-8D18-E9C7D7D66AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81DFB99-9B25-4E1F-8D18-E9C7D7D66AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625A6710-0618-4E8B-A987-F9AF73EBFD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625A6710-0618-4E8B-A987-F9AF73EBFD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625A6710-0618-4E8B-A987-F9AF73EBFD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625A6710-0618-4E8B-A987-F9AF73EBFD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3538D94-0506-4636-9820-8D41AD261E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3538D94-0506-4636-9820-8D41AD261E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3538D94-0506-4636-9820-8D41AD261E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3538D94-0506-4636-9820-8D41AD261E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0D6F21-884F-4071-BF99-3077B8088F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0D6F21-884F-4071-BF99-3077B8088F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0D6F21-884F-4071-BF99-3077B8088F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0D6F21-884F-4071-BF99-3077B8088F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEDB884-AC5D-4A5D-9928-0A762D7667F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEDB884-AC5D-4A5D-9928-0A762D7667F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEDB884-AC5D-4A5D-9928-0A762D7667F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEDB884-AC5D-4A5D-9928-0A762D7667F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4527F71F-D8E1-4816-B75B-FC65712281A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4527F71F-D8E1-4816-B75B-FC65712281A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4527F71F-D8E1-4816-B75B-FC65712281A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4527F71F-D8E1-4816-B75B-FC65712281A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F016EF-DFEE-4C7D-88F0-172FEA0E6946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F016EF-DFEE-4C7D-88F0-172FEA0E6946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F016EF-DFEE-4C7D-88F0-172FEA0E6946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F016EF-DFEE-4C7D-88F0-172FEA0E6946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{381E67C7-D7D7-42F4-91B3-2D09B954AF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381E67C7-D7D7-42F4-91B3-2D09B954AF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381E67C7-D7D7-42F4-91B3-2D09B954AF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381E67C7-D7D7-42F4-91B3-2D09B954AF62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3FDBD9-45BA-49E6-A739-20EEC5124424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3FDBD9-45BA-49E6-A739-20EEC5124424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3FDBD9-45BA-49E6-A739-20EEC5124424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3FDBD9-45BA-49E6-A739-20EEC5124424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8783DB9B-F96C-4CF6-BC70-8C68497A1231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8783DB9B-F96C-4CF6-BC70-8C68497A1231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8783DB9B-F96C-4CF6-BC70-8C68497A1231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8783DB9B-F96C-4CF6-BC70-8C68497A1231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337EE890-F767-4B3D-927C-6B627A960A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337EE890-F767-4B3D-927C-6B627A960A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337EE890-F767-4B3D-927C-6B627A960A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337EE890-F767-4B3D-927C-6B627A960A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31507314-FE38-412B-A821-A59FC70DBD07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31507314-FE38-412B-A821-A59FC70DBD07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31507314-FE38-412B-A821-A59FC70DBD07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31507314-FE38-412B-A821-A59FC70DBD07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3538D94-0506-4636-9820-8D41AD261E51} = {C4CDF4E3-88FB-45CF-B6A5-7D675A1C028C}
+		{FC0D6F21-884F-4071-BF99-3077B8088F26} = {C4CDF4E3-88FB-45CF-B6A5-7D675A1C028C}
+		{47983378-4980-4FC8-9F09-DEFBF22C9319} = {FC68A264-00CB-4824-AA39-68C1367675C6}
+		{7EEDB884-AC5D-4A5D-9928-0A762D7667F0} = {47983378-4980-4FC8-9F09-DEFBF22C9319}
+		{24A33665-87DA-40E4-869B-C82D62AD953D} = {47983378-4980-4FC8-9F09-DEFBF22C9319}
+		{1A6A5B40-8F2C-434B-87C2-6E6CE122D995} = {47983378-4980-4FC8-9F09-DEFBF22C9319}
+		{DFEE733A-ECB0-4EDB-9533-7C125DD5D7EE} = {24A33665-87DA-40E4-869B-C82D62AD953D}
+		{4527F71F-D8E1-4816-B75B-FC65712281A4} = {1A6A5B40-8F2C-434B-87C2-6E6CE122D995}
+		{34F016EF-DFEE-4C7D-88F0-172FEA0E6946} = {24A33665-87DA-40E4-869B-C82D62AD953D}
+		{381E67C7-D7D7-42F4-91B3-2D09B954AF62} = {DFEE733A-ECB0-4EDB-9533-7C125DD5D7EE}
+		{EE3FDBD9-45BA-49E6-A739-20EEC5124424} = {1A6A5B40-8F2C-434B-87C2-6E6CE122D995}
+		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498} = {FC68A264-00CB-4824-AA39-68C1367675C6}
+		{8783DB9B-F96C-4CF6-BC70-8C68497A1231} = {FC68A264-00CB-4824-AA39-68C1367675C6}
+		{337EE890-F767-4B3D-927C-6B627A960A0D} = {DFEE733A-ECB0-4EDB-9533-7C125DD5D7EE}
+		{31507314-FE38-412B-A821-A59FC70DBD07} = {24A33665-87DA-40E4-869B-C82D62AD953D}
+	EndGlobalSection
+EndGlobal

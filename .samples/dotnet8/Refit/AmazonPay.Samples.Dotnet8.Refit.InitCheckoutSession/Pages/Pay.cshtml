@@ -1,0 +1,118 @@
+﻿@page
+@using System.Text.Json
+@model AmazonPay.Samples.Dotnet8.Refit.InitCheckoutSession.Pages.Pay
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Create amazon checkout session.</title>
+    <script src="https://static-na.payments-amazon.com/checkout.js" type="text/javascript"></script>
+
+</head>
+<body>
+<section>
+    <div>
+        checkout session id: <b>@Model.CheckoutSessionId</b>
+        charge permission id: <b>@Model.ChargePermissionId</b>
+    </div>
+</section>
+<section>
+    <div>
+        <input type="number" id="amount" placeholder="amount" min="1" value="1"/>
+    </div>
+    <div id="amazon__button">
+    </div>
+</section>
+
+<script type="text/javascript">
+    async function createAmazonPay({checkoutSessionId, chargePermissionId, publicKey, merchantId}){
+
+        if(checkoutSessionId){
+            console.log(`Session id: ${checkoutSessionId}`);
+            console.log(`Paermission id: ${chargePermissionId}`);
+        }
+
+        console.log(merchantId);
+        console.log(publicKey);
+
+
+        const amazonPayButton = amazon.Pay.renderButton('#amazon__button', {
+            // set checkout environment
+            merchantId: merchantId,
+            ledgerCurrency: 'USD',
+            sandbox: true,
+            // customize the buyer experience
+            checkoutLanguage: 'en_US',
+            productType: 'PayOnly',
+            placement: 'Cart',
+            buttonColor: 'Gold',
+            publicKeyId: publicKey,
+            algorithm: 'AMZN-PAY-RSASSA-PSS-V2'
+        });
+
+        amazonPayButton.onClick(function() {
+            // define your custom actions here
+            const orderAmount = getOrderTtalAmount();
+            fetch("/amazon/init", {
+                method: 'post',
+                mode: 'same-origin',
+                body: JSON.stringify({
+                    amount: orderAmount,
+                    orderReference:"somorder",
+                    paymentReference: "paymentreference"
+                }),
+                headers:{
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            }).
+            then(r=> {
+                if (!r.ok){
+                    alert("Something wrong while get amazon checkout params");
+                    throw new Error("Something wrong while get amazon checkout params")
+                }
+                return r;
+            }).
+            then(r=>r.json()).
+            then(initCheckoutParams=>{
+                amazonPayButton.initCheckout({
+                    estimatedOrderAmount: {"amount": orderAmount, "currencyCode": "USD"},
+                    createCheckoutSessionConfig: {
+                        payloadJSON: initCheckoutParams.payload,
+                        algorithm: 'AMZN-PAY-RSASSA-PSS-V2',
+                        signature: initCheckoutParams.signature
+                    }
+                });
+            });
+        });
+    }
+
+    function getOrderTtalAmount(){
+        return parseFloat(document.getElementById("amount").value) || 0.0;
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    @{
+        var pageModel = new
+        {
+            checkoutSessionId = Model.CheckoutSessionId,
+            chargePermissionId = Model.ChargePermissionId,
+            publicKey = Model.PublicKey,
+            merchantId = Model.MerchantId
+        };
+    }
+    const model = @Html.Raw(@JsonSerializer.Serialize(pageModel));
+
+    createAmazonPay(model);
+</script>
+
+</body>
+</html>
