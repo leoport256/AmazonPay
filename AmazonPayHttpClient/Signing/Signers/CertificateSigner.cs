@@ -5,24 +5,23 @@ namespace AmazonPayHttpClient;
 internal sealed class CertificateSigner<TPrivateKeyProvider>: ISigner<TPrivateKeyProvider> 
 	where TPrivateKeyProvider : class, IPrivateKeyProvider
 {
-	private readonly TPrivateKeyProvider _privateKeyProvider;
+	private readonly RSA _rsa;
+	private readonly HashAlgorithm _alg;
+
 
 	public CertificateSigner(TPrivateKeyProvider privateKeyProvider)
 	{
-		_privateKeyProvider = privateKeyProvider;
+		_alg = CreateAlgorithm();
+		
+		_rsa = RSA.Create();
+		_rsa.ImportFromPem(privateKeyProvider.Provide());
 	}
 	
 	public byte[] Sign(byte[] content)
 	{
-		// TODO: Maybe one time?
-		using var alg = CreateAlgorithm();
-		var hash = alg.ComputeHash(content);
+		var hash = _alg.ComputeHash(content);
 
-		var privateKey = _privateKeyProvider.Provide();
-		using var  rsa = RSA.Create();
-		rsa.ImportFromPem(privateKey);
-
-		var signature = rsa.SignHash(hash, HashAlgorithmName.SHA256,
+		var signature = _rsa.SignHash(hash, HashAlgorithmName.SHA256,
 			RSASignaturePadding.Pss); 
 
 		return signature;	
@@ -31,6 +30,12 @@ internal sealed class CertificateSigner<TPrivateKeyProvider>: ISigner<TPrivateKe
 	private HashAlgorithm CreateAlgorithm()
 	{
 		return SHA256.Create();
+	}
+
+	public void Dispose()
+	{
+		_alg.Dispose();
+		_rsa.Dispose();
 	}
 }
 

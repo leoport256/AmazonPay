@@ -1,6 +1,6 @@
 ﻿namespace AmazonPayHttpClient;
 
-public interface ISigner
+public interface ISigner: IDisposable
 {
 	byte[] Sign(byte[] content);
 }
