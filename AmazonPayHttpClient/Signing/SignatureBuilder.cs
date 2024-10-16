@@ -1,6 +1,6 @@
 namespace AmazonPayHttpClient;
 
-internal sealed class SignatureBuilder
+internal sealed partial class SignatureBuilder
 {
 	private readonly Uri _url;
 	private readonly IHasher _hash;
@@ -23,25 +23,25 @@ internal sealed class SignatureBuilder
 
 	public Task<(byte[] signature, string headers)> Build()
 	{
-		var (canonicalRequest, signedHeaders) = BuildCanonicalRequest();
+		var (canonicalRequest, signedHeaders) = CreateCanonicalRequest();
 		var stringToSign = BuildStringToSign(canonicalRequest);
 		var sign = BuildSign(stringToSign);
 
 		return Task.FromResult((sign, signedHeaders));
 	}
 
-	private (string request, string signedHeaders)  BuildCanonicalRequest()
-	{
-		var builder = new RequestForSignBuilder(
-			_url,
-			_body,
-			_headers,
-			_hash,
-			_method
-			);
-		
-		return builder.Build();
-	}
+	// private (string request, string signedHeaders)  BuildCanonicalRequest()
+	// {
+	// 	var builder = new RequestForSignBuilder(
+	// 		_url,
+	// 		_body,
+	// 		_headers,
+	// 		_hash,
+	// 		_method
+	// 		);
+	// 	
+	// 	return builder.Build();
+	// }
 
 	private string BuildStringToSign(string request)
 	{
