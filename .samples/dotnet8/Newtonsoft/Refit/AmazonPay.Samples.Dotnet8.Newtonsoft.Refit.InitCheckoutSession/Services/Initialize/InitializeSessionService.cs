@@ -10,10 +10,10 @@ internal sealed class InitializeSessionService: IInitializeSessionService
 	private readonly IAmazonConfiguration _configuration;
 	private readonly ISignatureClient<PrivateKeyConfigurationProvider> _payloadSigner;
 
-	public InitializeSessionService(IAmazonConfiguration configuration, PrivateKeyConfigurationProvider privateKeyProvider)
+	public InitializeSessionService(IAmazonConfiguration configuration, ISignatureClient<PrivateKeyConfigurationProvider> payloadSigner)
 	{
 		_configuration = configuration;
-		_payloadSigner = SignatureClientFactory.Create(privateKeyProvider);
+		_payloadSigner = payloadSigner;
 	}
 
 	public Task<Result> Initialize(Request request,
