@@ -1,6 +1,6 @@
 namespace AmazonPayHttpClient;
 
-internal class SignatureBuilder
+internal sealed class SignatureBuilder
 {
 	private readonly Uri _url;
 	private readonly IHasher _hash;
@@ -45,8 +45,7 @@ internal class SignatureBuilder
 
 	private string BuildStringToSign(string request)
 	{
-		var builder = new StringToSignBuilder(_hash);
-		return builder.Build(request);
+		return  StringToSignBuilder.Build(_hash, request);
 	}
 
 	private byte[] BuildSign(string content)

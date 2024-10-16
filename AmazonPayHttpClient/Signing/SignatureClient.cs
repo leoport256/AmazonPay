@@ -19,8 +19,7 @@ internal sealed class SignatureClient<TPrivateKeyProvider>: ISignatureClient<TPr
 	
 	private string BuildStringToSign(string request)
 	{
-		var builder = new StringToSignBuilder(_hasher);
-		return builder.Build(request);
+		return StringToSignBuilder.Build(_hasher, request);
 	}
 
 	private byte[] BuildSign(string content)
