@@ -30,19 +30,6 @@ internal sealed partial class SignatureBuilder
 		return Task.FromResult((sign, signedHeaders));
 	}
 
-	// private (string request, string signedHeaders)  BuildCanonicalRequest()
-	// {
-	// 	var builder = new RequestForSignBuilder(
-	// 		_url,
-	// 		_body,
-	// 		_headers,
-	// 		_hash,
-	// 		_method
-	// 		);
-	// 	
-	// 	return builder.Build();
-	// }
-
 	private string BuildStringToSign(string request)
 	{
 		return  StringToSignBuilder.Build(_hash, request);
