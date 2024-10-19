@@ -5,9 +5,8 @@ namespace AmazonPayHttpClient;
 
 internal sealed class Sha256Hasher: IHasher
 {
-	public byte[] Hash(string content)
+	public byte[] Hash(byte[] bytes)
 	{
-		var bytes = Encoding.UTF8.GetBytes(content);
 		var hash = SHA256.HashData(bytes);
 		return hash;	
 	}
