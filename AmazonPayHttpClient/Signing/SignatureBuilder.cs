@@ -7,17 +7,20 @@ internal sealed partial class SignatureBuilder
 	private readonly ISigner _signer;
 	private readonly string _method;
 	private readonly string _body;
-	private readonly IEnumerable<KeyValuePair<string, IEnumerable<string>>> _headers;
+	private readonly string[] _headerKeys;
+	private readonly string[] _headerValues;
 
-	public SignatureBuilder(Uri? url, string? body,  IEnumerable<KeyValuePair<string, IEnumerable<string>>> headers, 
+	public SignatureBuilder(Uri? url, string? body, 
+		string[] headerKeys, string[] headerValues,
 		IHasher hash, ISigner signer, string method = "GET")
 	{
 		_url = url ?? throw new ArgumentNullException(nameof(url));
+		_headerKeys = headerKeys;
+		_headerValues = headerValues;
 		_hash = hash;
 		_signer = signer;
 		_method = method;
 		_body = body ?? string.Empty;
-		_headers = headers;
 	}
 
 

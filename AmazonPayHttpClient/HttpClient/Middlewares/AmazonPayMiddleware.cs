@@ -36,7 +36,7 @@ public class AmazonPayMiddleware: DelegatingHandler
 		addIfNotExists("x-amz-pay-region", "na");
 		addIfNotExists("x-amz-pay-date", GetFormattedTimestamp);
 		addIfNotExists("x-amz-pay-host", request.RequestUri!.Host);
-		
+
 		void addIfNotExists(string header, string value)
 		{
 			if (!request.Headers.Contains(header))

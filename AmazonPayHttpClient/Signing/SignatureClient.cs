@@ -36,6 +36,5 @@ public static  class SignatureClientExtensions
 
 	{
 		return Convert.ToBase64String(source.Sign(content));
-
 	}
 }

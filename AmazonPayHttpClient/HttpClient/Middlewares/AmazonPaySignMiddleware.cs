@@ -60,9 +60,15 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			? await request.Content.ReadAsStringAsync()
 			: null;
 
+
+		var (headersKeys, headersValues) = request.Method == HttpMethod.Post
+			? RetrieveHeadersForPostRequest(request)
+			: RetrieveHeaders(request);
+		
 		var builder = new SignatureBuilder(request.RequestUri, 
 			content, 
-			retrieveAllRequestHeaders(), 
+			headersKeys,
+			headersValues,
 			_hash, 
 			_signer,
 			request.Method.Method);
@@ -70,33 +76,68 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 		var (signBytes, signedHeaders) = await builder.Build();
 		var signature = Convert.ToBase64String(signBytes);
 		return (signature, signedHeaders);
-
-		IEnumerable<KeyValuePair<string, IEnumerable<string>>> retrieveAllRequestHeaders()
+	}
+	
+	private (string[] headers, string[] values) RetrieveHeaders(HttpRequestMessage request)
+	{
+		var headers = new[]
 		{
-			return concatWithIdempotencyHeader([
-				new("accept", getHeader("accept")),
-				new("content-type", new[] { "application/json" }),
-				new("x-amz-pay-region", getHeader("x-amz-pay-region")),
-				new("x-amz-pay-date", getHeader("x-amz-pay-date")),
-				new("x-amz-pay-host", getHeader("x-amz-pay-host"))
-			]);
-
-			IEnumerable<string> getHeader(string header)
-			{
-				return request.Headers.TryGetValues(header, out var r)
-					? r
-					: Array.Empty<string>().AsEnumerable();
-			}
+			"accept", 
+			"content-type", 
+			"x-amz-pay-date", 
+			"x-amz-pay-host", 
+			"x-amz-pay-region"
+		};
 			
-			IEnumerable<KeyValuePair<string, IEnumerable<string>>> concatWithIdempotencyHeader(KeyValuePair<string, IEnumerable<string>>[] headers)
-			{
-				if(request.Method != HttpMethod.Post)
-					return headers;
+		var values = new[]
+		{
+			"application/json", 
+			"application/json", 
+			GetHeader("x-amz-pay-date", request), 
+			GetHeader("x-amz-pay-host", request), 
+			GetHeader("x-amz-pay-region", request)
+		};
 
-				return request.Headers.TryGetValues("x-amz-pay-idempotency-key", out var r)
-					? headers.Concat(new[] { new KeyValuePair<string, IEnumerable<string>>("x-amz-pay-idempotency-key", r) })
-					: throw new InvalidOperationException("No idempotency key. Can not post request.");
-			}
+		return (headers, values);
+	}
+	
+	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpRequestMessage request)
+	{
+
+		var headers = new[]
+		{
+			"accept", 
+			"content-type", 
+			"x-amz-pay-date", 
+			"x-amz-pay-host", 
+			"x-amz-pay-idempotency-key",
+			"x-amz-pay-region"
+		};
+			
+		var values = new[]
+		{
+			"application/json", 
+			"application/json", 
+			GetHeader("x-amz-pay-date", request), 
+			GetHeader("x-amz-pay-host", request), 
+			getIdempotencyHeader(),
+			GetHeader("x-amz-pay-region", request)
+		};
+
+		return (headers, values);
+			
+		string getIdempotencyHeader()
+		{
+			return request.Headers.TryGetValues("x-amz-pay-idempotency-key", out var r)
+				? r.First()
+				: Guid.NewGuid().ToString("N");
 		}
+	}
+	
+	private string GetHeader(string header, HttpRequestMessage request)
+	{
+		return request.Headers.TryGetValues(header, out var r)
+			? r.First()
+			: string.Empty;
 	}
 }

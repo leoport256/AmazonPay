@@ -9,15 +9,11 @@ internal sealed partial class SignatureBuilder
 
 	public (string request, string signedHeaders) CreateCanonicalRequest()
 	{
-		var headersForSign = _headers.
-			OrderBy(s => s.Key).
-			ToDictionary(s => s.Key.ToLower(), s => s.Value);
-
-		var signedHeaders = string.Join(";", headersForSign.Keys);
-		return (BuildCanonicalRequest(headersForSign, signedHeaders), signedHeaders);
+		var signedHeaders = string.Join(";", _headerKeys);
+		return (BuildCanonicalRequest(signedHeaders), signedHeaders);
 	}
 	
-	private string BuildCanonicalRequest(Dictionary<string, IEnumerable<string>> headers, string signedHeaders)
+	private string BuildCanonicalRequest(string signedHeaders)
 	{
 		
 		var builder = new StringBuilder();
@@ -28,7 +24,7 @@ internal sealed partial class SignatureBuilder
 			Append(LineSeparator).
 			Append(LineSeparator);
 		
-		AppendHeaders(builder, headers, signedHeaders).
+		AppendHeaders(builder, _headerKeys, _headerValues, signedHeaders).
 			Append(LineSeparator).
 			Append(_hash.FormattedHash(_body));
 
@@ -36,18 +32,16 @@ internal sealed partial class SignatureBuilder
 	}
 	
 	private StringBuilder AppendHeaders(StringBuilder builder, 
-		Dictionary<string, IEnumerable<string>> headers, string signedHeaders)
+		string[] headerKeys, string[] headerValues, string signedHeaders)
 	{
-		foreach (var key  in headers.Keys)
+		for(var i = 0; i < Math.Min(headerKeys.Length, headerValues.Length); ++i)
 		{
-			var values = headers[key];
-			var value = string.Join(",", values);
-			builder.Append($"{key}:{value}").Append(LineSeparator);
+			builder.Append($"{headerKeys[i]}:{headerValues[i]}{LineSeparator}");
 		}
 		
 		builder.
 			Append(LineSeparator).
-			Append(string.Join(";", headers.Keys));
+			Append(signedHeaders);
 
 		return builder;
 	}
