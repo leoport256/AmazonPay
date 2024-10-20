@@ -80,15 +80,6 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 	
 	private (string[] headers, string[] values) RetrieveHeaders(HttpRequestMessage request)
 	{
-		var headers = new[]
-		{
-			"accept", 
-			"content-type", 
-			"x-amz-pay-date", 
-			"x-amz-pay-host", 
-			"x-amz-pay-region"
-		};
-			
 		var values = new[]
 		{
 			"application/json", 
@@ -98,22 +89,11 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", request)
 		};
 
-		return (headers, values);
+		return (HeadersForOtherRequest, values);
 	}
 	
 	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpRequestMessage request)
 	{
-
-		var headers = new[]
-		{
-			"accept", 
-			"content-type", 
-			"x-amz-pay-date", 
-			"x-amz-pay-host", 
-			"x-amz-pay-idempotency-key",
-			"x-amz-pay-region"
-		};
-			
 		var values = new[]
 		{
 			"application/json", 
@@ -124,7 +104,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", request)
 		};
 
-		return (headers, values);
+		return (_headersForPostRequest, values);
 			
 		string getIdempotencyHeader()
 		{
@@ -140,4 +120,27 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			? r.First()
 			: string.Empty;
 	}
+	
+	private static readonly string[] _headersForPostRequest = new[]
+	{
+		"accept", 
+		"content-type", 
+		"x-amz-pay-date", 
+		"x-amz-pay-host", 
+		"x-amz-pay-idempotency-key",
+		"x-amz-pay-region"
+	};
+	
+	private static string _joinedHeadersForPostRequest = string.Join(";", _headersForPostRequest);
+	
+	private static string[] HeadersForOtherRequest = new[]
+	{
+		"accept", 
+		"content-type", 
+		"x-amz-pay-date", 
+		"x-amz-pay-host", 
+		"x-amz-pay-region"
+	};
+	
+	private static string _joinedHeadersForOtherRequest = string.Join(";", HeadersForOtherRequest);
 }
