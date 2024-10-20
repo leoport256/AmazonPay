@@ -68,6 +68,9 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 		var builder = new SignatureBuilder(request.RequestUri, 
 			content, 
 			headersKeys,
+			request.Method == HttpMethod.Post
+				? _joinedHeadersForPostRequest
+				: _joinedHeadersForOtherRequest,
 			headersValues,
 			_hash, 
 			_signer,

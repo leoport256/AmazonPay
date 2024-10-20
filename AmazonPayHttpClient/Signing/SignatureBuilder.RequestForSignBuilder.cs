@@ -7,13 +7,7 @@ internal sealed partial class SignatureBuilder
 {
 	private const string LineSeparator = "\n";
 
-	public (string request, string signedHeaders) CreateCanonicalRequest()
-	{
-		var signedHeaders = string.Join(";", _headerKeys);
-		return (BuildCanonicalRequest(signedHeaders), signedHeaders);
-	}
-	
-	private string BuildCanonicalRequest(string signedHeaders)
+	private string BuildCanonicalRequest()
 	{
 		
 		var builder = new StringBuilder();
@@ -24,7 +18,7 @@ internal sealed partial class SignatureBuilder
 			Append(LineSeparator).
 			Append(LineSeparator);
 		
-		AppendHeaders(builder, _headerKeys, _headerValues, signedHeaders).
+		AppendHeaders(builder, _headerKeys, _headerValues).
 			Append(LineSeparator).
 			Append(_hash.FormattedHash(_body));
 
@@ -32,7 +26,7 @@ internal sealed partial class SignatureBuilder
 	}
 	
 	private StringBuilder AppendHeaders(StringBuilder builder, 
-		string[] headerKeys, string[] headerValues, string signedHeaders)
+		string[] headerKeys, string[] headerValues)
 	{
 		for(var i = 0; i < Math.Min(headerKeys.Length, headerValues.Length); ++i)
 		{
@@ -41,7 +35,7 @@ internal sealed partial class SignatureBuilder
 		
 		builder.
 			Append(LineSeparator).
-			Append(signedHeaders);
+			Append(_joinedHeaderKeys);
 
 		return builder;
 	}
