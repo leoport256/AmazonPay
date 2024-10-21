@@ -60,66 +60,81 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			? await request.Content.ReadAsStringAsync()
 			: null;
 
-
-		var (headersKeys, headersValues) = request.Method == HttpMethod.Post
-			? RetrieveHeadersForPostRequest(request)
-			: RetrieveHeaders(request);
-		
-		var builder = new SignatureBuilder(request.RequestUri, 
-			content, 
-			headersKeys,
-			request.Method == HttpMethod.Post
-				? SignatureHeaders.JoinedHeadersForPostRequest
-				: SignatureHeaders.JoinedHeadersForOtherRequest,
-			headersValues,
-			_hash, 
-			_signer,
-			request.Method.Method);
+		var builder = request.Method == HttpMethod.Post
+			? CreateSignatureBuilderForPost(request.Headers, request.RequestUri, content)
+			: CreateSignatureBuilderForOther(request.Headers, request.RequestUri, content, request.Method);
 		
 		var (signBytes, signedHeaders) = await builder.Build();
 		var signature = Convert.ToBase64String(signBytes);
 		return (signature, signedHeaders);
 	}
-	
-	private (string[] headers, string[] values) RetrieveHeaders(HttpRequestMessage request)
+
+	private SignatureBuilder CreateSignatureBuilderForPost(HttpHeaders headers,  Uri?  uri, string? content)
+	{
+		var (headersKeys, headersValues) = RetrieveHeadersForPostRequest(headers);
+		return new SignatureBuilder(uri, 
+			content, 
+			headersKeys,
+			SignatureHeaders.JoinedHeadersForPostRequest,
+			headersValues,
+			_hash, 
+			_signer,
+			HttpMethod.Post.Method);
+	}
+
+	private SignatureBuilder CreateSignatureBuilderForOther(HttpHeaders headers, Uri? uri,
+		string? content, HttpMethod method)
+	{
+		var (headersKeys, headersValues) = RetrieveHeaders(headers);
+		return new SignatureBuilder(uri,
+			content,
+			headersKeys,
+			SignatureHeaders.JoinedHeadersForOtherRequest,
+			headersValues,
+			_hash,
+			_signer,
+			method.Method);
+	}
+
+	private (string[] headers, string[] values) RetrieveHeaders(HttpHeaders headers)
 	{
 		var values = new[]
 		{
 			"application/json", 
 			"application/json", 
-			GetHeader("x-amz-pay-date", request), 
-			GetHeader("x-amz-pay-host", request), 
-			GetHeader("x-amz-pay-region", request)
+			GetHeader("x-amz-pay-date", headers), 
+			GetHeader("x-amz-pay-host", headers), 
+			GetHeader("x-amz-pay-region", headers)
 		};
 
 		return (SignatureHeaders.HeadersForOtherRequest, values);
 	}
 	
-	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpRequestMessage request)
+	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpHeaders headers)
 	{
 		var values = new[]
 		{
 			"application/json", 
 			"application/json", 
-			GetHeader("x-amz-pay-date", request), 
-			GetHeader("x-amz-pay-host", request), 
+			GetHeader("x-amz-pay-date", headers), 
+			GetHeader("x-amz-pay-host", headers), 
 			getIdempotencyHeader(),
-			GetHeader("x-amz-pay-region", request)
+			GetHeader("x-amz-pay-region", headers)
 		};
 
 		return (SignatureHeaders.HeadersForPostRequest, values);
 			
 		string getIdempotencyHeader()
 		{
-			return request.Headers.TryGetValues("x-amz-pay-idempotency-key", out var r)
+			return headers.TryGetValues("x-amz-pay-idempotency-key", out var r)
 				? r.First()
 				: Guid.NewGuid().ToString("N");
 		}
 	}
 	
-	private string GetHeader(string header, HttpRequestMessage request)
+	private string GetHeader(string header, HttpHeaders headers)
 	{
-		return request.Headers.TryGetValues(header, out var r)
+		return headers.TryGetValues(header, out var r)
 			? r.First()
 			: string.Empty;
 	}
@@ -139,9 +154,9 @@ internal static class SignatureHeaders
 		"x-amz-pay-region"
 	};
 	
-	public static string JoinedHeadersForPostRequest = string.Join(";", HeadersForPostRequest);
+	public static readonly string JoinedHeadersForPostRequest = string.Join(";", HeadersForPostRequest);
 	
-	public static string[] HeadersForOtherRequest = new[]
+	public static readonly string[] HeadersForOtherRequest = new[]
 	{
 		"accept", 
 		"content-type", 
@@ -150,5 +165,5 @@ internal static class SignatureHeaders
 		"x-amz-pay-region"
 	};
 	
-	public static string JoinedHeadersForOtherRequest = string.Join(";", HeadersForOtherRequest);
+	public static readonly string JoinedHeadersForOtherRequest = string.Join(";", HeadersForOtherRequest);
 }
