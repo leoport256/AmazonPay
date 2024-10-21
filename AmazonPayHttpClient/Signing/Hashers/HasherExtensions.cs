@@ -7,7 +7,12 @@ internal static class HasherExtensions
 	public static string FormattedHash(this IHasher hasher, string content)
 	{
 		var bytes = hasher.Hash(content);
-		
+
+		return BytesToFormattedHex(bytes);
+	}
+
+	public static string BytesToFormattedHex(byte[] bytes)
+	{
 		Span<char> chars = stackalloc char[bytes.Length << 1]; 
 
 		for (byte i = 0, ic = 0; i < bytes.Length; i++, ic += 2)
