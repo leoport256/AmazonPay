@@ -71,10 +71,10 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 
 	private SignatureBuilder CreateSignatureBuilderForPost(HttpHeaders headers,  Uri?  uri, string? content)
 	{
-		var (headersKeys, headersValues) = RetrieveHeadersForPostRequest(headers);
+		var headersValues = RetrieveHeadersForPostRequest(headers);
 		return new SignatureBuilder(uri, 
 			content, 
-			headersKeys,
+			SignatureHeaders.HeadersForPostRequest,
 			SignatureHeaders.JoinedHeadersForPostRequest,
 			headersValues,
 			_hash, 
@@ -85,10 +85,10 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 	private SignatureBuilder CreateSignatureBuilderForOther(HttpHeaders headers, Uri? uri,
 		string? content, HttpMethod method)
 	{
-		var (headersKeys, headersValues) = RetrieveHeaders(headers);
+		var  headersValues = RetrieveHeaders(headers);
 		return new SignatureBuilder(uri,
 			content,
-			headersKeys,
+			SignatureHeaders.HeadersForOtherRequest,
 			SignatureHeaders.JoinedHeadersForOtherRequest,
 			headersValues,
 			_hash,
@@ -96,7 +96,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			method.Method);
 	}
 
-	private (string[] headers, string[] values) RetrieveHeaders(HttpHeaders headers)
+	private string[] RetrieveHeaders(HttpHeaders headers)
 	{
 		var values = new[]
 		{
@@ -107,10 +107,10 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", headers)
 		};
 
-		return (SignatureHeaders.HeadersForOtherRequest, values);
+		return values;
 	}
 	
-	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpHeaders headers)
+	private string[] RetrieveHeadersForPostRequest(HttpHeaders headers)
 	{
 		var values = new[]
 		{
@@ -122,7 +122,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", headers)
 		};
 
-		return (SignatureHeaders.HeadersForPostRequest, values);
+		return values;
 			
 		string getIdempotencyHeader()
 		{
