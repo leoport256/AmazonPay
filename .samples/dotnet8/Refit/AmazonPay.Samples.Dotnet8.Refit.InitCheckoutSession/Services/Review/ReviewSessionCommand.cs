@@ -21,8 +21,6 @@ internal sealed class ReviewSessionCommand: IReviewSessionService
 		{
 			_logger.LogError(session.Error, "Something wrong with session: {sessionId}", request.CheckoutSessionId);
 			throw new InvalidOperationException($"Something wrong with session: {request.CheckoutSessionId}");
-
-			//ThrowOnSuccessStatusCode(request.CheckoutSessionId);
 		}
 
 		var updateSessionRequest = new UpdateCheckoutSessionRequest
