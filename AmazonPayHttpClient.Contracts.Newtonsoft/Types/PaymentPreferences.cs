@@ -1,13 +1,12 @@
 using Newtonsoft.Json;
 
-namespace AmazonPayHttpClient.Contracts.Newtonsoft
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+
+public class PaymentPreferences
 {
-    public class PaymentPreferences
-    {
-        /// <summary>
-        /// Amazon Pay-provided description for buyer-selected payment instrument.
-        /// </summary>
-        [JsonProperty("paymentDescriptor")]
-        public string? PaymentDescriptor { get; set; }
-    }
+    /// <summary>
+    /// Amazon Pay-provided description for buyer-selected payment instrument.
+    /// </summary>
+    [JsonProperty("paymentDescriptor")]
+    public string? PaymentDescriptor { get; set; }
 }

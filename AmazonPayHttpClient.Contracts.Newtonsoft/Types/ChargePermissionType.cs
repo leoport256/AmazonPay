@@ -1,17 +1,15 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace AmazonPayHttpClient.Contracts.Newtonsoft
-{
-    /// <summary>
-    /// The type of Charge Permission requested.
-    /// </summary>
-    
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum ChargePermissionType
-    {
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-        OneTime,
-        Recurring
-    }
+/// <summary>
+/// The type of Charge Permission requested.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+public enum ChargePermissionType
+{
+
+    OneTime,
+    Recurring
 }

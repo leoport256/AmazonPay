@@ -1,42 +1,39 @@
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace AmazonPayHttpClient.Contracts.Newtonsoft
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+
+public sealed class DeliverySpecifications
 {
-    public sealed class DeliverySpecifications
+    public DeliverySpecifications()
     {
-        public DeliverySpecifications()
-        {
-            SpecialRestrictions = new List<SpecialRestriction>();
-            AddressRestrictions = new AddressRestrictions();
-        }
+        SpecialRestrictions = new List<SpecialRestriction>();
+        AddressRestrictions = new AddressRestrictions();
+    }
 
-        /// <summary>
-        /// Special restrictions, for example to prohibit buyers from selecting PO boxes.
-        /// </summary>
-        [JsonIgnore]
-        public List<SpecialRestriction> SpecialRestrictions { get; private set; }
+    /// <summary>
+    /// Special restrictions, for example to prohibit buyers from selecting PO boxes.
+    /// </summary>
+    [JsonIgnore]
+    public List<SpecialRestriction> SpecialRestrictions { get; private set; }
 
 
-        [JsonProperty("specialRestrictions")]
-        public List<SpecialRestriction>? SpecialRestrictionsRaw
-        {
-            get => SpecialRestrictions.Any() ? SpecialRestrictions : null;
-            set => SpecialRestrictions = value is null || !value.Any() ? new List<SpecialRestriction>() : value;
-        }
+    [JsonProperty("specialRestrictions")]
+    public List<SpecialRestriction>? SpecialRestrictionsRaw
+    {
+        get => SpecialRestrictions.Any() ? SpecialRestrictions : null;
+        set => SpecialRestrictions = value is null || !value.Any() ? new List<SpecialRestriction>() : value;
+    }
 
-        /// <summary>
-        /// Country-based address restrictions.
-        /// </summary>
-        [JsonIgnore]
-        public AddressRestrictions AddressRestrictions { get; private set; }
+    /// <summary>
+    /// Country-based address restrictions.
+    /// </summary>
+    [JsonIgnore]
+    public AddressRestrictions AddressRestrictions { get; private set; }
 
-        [JsonProperty("addressRestrictions")]
-        public AddressRestrictions? AddressRestrictionsRaw
-        {
-            get => AddressRestrictions.IsEmpty ? null : AddressRestrictions;
-            set => AddressRestrictions = value is null || value.IsEmpty ? new AddressRestrictions() : value;
-        }
+    [JsonProperty("addressRestrictions")]
+    public AddressRestrictions? AddressRestrictionsRaw
+    {
+        get => AddressRestrictions.IsEmpty ? null : AddressRestrictions;
+        set => AddressRestrictions = value is null || value.IsEmpty ? new AddressRestrictions() : value;
     }
 }

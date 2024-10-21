@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace AmazonPayHttpClient;
+﻿namespace AmazonPayHttpClient;
 
 internal static class HasherExtensions
 {

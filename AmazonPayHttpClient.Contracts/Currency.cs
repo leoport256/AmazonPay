@@ -1,75 +1,74 @@
 using System.Text.Json.Serialization;
 
 
-namespace AmazonPayHttpClient.Contracts
+namespace AmazonPayHttpClient.Contracts;
+
+/// <summary>
+/// Currencies available for Amazon Pay.
+/// </summary>
+/// <remarks>
+/// Specifying a currenty other than the ledger currenc is only supported in the EU region.
+/// </remarks>
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum Currency
 {
     /// <summary>
-    /// Currencies available for Amazon Pay.
+    /// Australian Dollar
     /// </summary>
-    /// <remarks>
-    /// Specifying a currenty other than the ledger currenc is only supported in the EU region.
-    /// </remarks>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum Currency
-    {
-        /// <summary>
-        /// Australian Dollar
-        /// </summary>
-        AUD,
+    AUD,
 
-        /// <summary>
-        /// British Pound
-        /// </summary>
-        GBP,
+    /// <summary>
+    /// British Pound
+    /// </summary>
+    GBP,
 
-        /// <summary>
-        /// Danish Krone
-        /// </summary>
-        DKK,
+    /// <summary>
+    /// Danish Krone
+    /// </summary>
+    DKK,
 
-        /// <summary>
-        /// Euro
-        /// </summary>
-        EUR,
+    /// <summary>
+    /// Euro
+    /// </summary>
+    EUR,
 
-        /// <summary>
-        /// Hong Kong Dollar
-        /// </summary>
-        HKD,
+    /// <summary>
+    /// Hong Kong Dollar
+    /// </summary>
+    HKD,
 
-        /// <summary>
-        /// Japanese Yen
-        /// </summary>
-        JPY,
+    /// <summary>
+    /// Japanese Yen
+    /// </summary>
+    JPY,
 
-        /// <summary>
-        /// New Zealand Dollar
-        /// </summary>
-        NZD,
+    /// <summary>
+    /// New Zealand Dollar
+    /// </summary>
+    NZD,
 
-        /// <summary>
-        /// Norwegian Krone
-        /// </summary>
-        NOK,
+    /// <summary>
+    /// Norwegian Krone
+    /// </summary>
+    NOK,
 
-        /// <summary>
-        /// South African Rand
-        /// </summary>
-        ZAR,
+    /// <summary>
+    /// South African Rand
+    /// </summary>
+    ZAR,
 
-        /// <summary>
-        /// Swedish Krone
-        /// </summary>
-        SEK,
+    /// <summary>
+    /// Swedish Krone
+    /// </summary>
+    SEK,
 
-        /// <summary>
-        /// Swiss Franc
-        /// </summary>
-        CHF,
+    /// <summary>
+    /// Swiss Franc
+    /// </summary>
+    CHF,
 
-        /// <summary>
-        /// United States Dollar
-        /// </summary>
-        USD
-    }
+    /// <summary>
+    /// United States Dollar
+    /// </summary>
+    USD
 }
