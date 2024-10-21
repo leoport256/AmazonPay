@@ -69,8 +69,8 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			content, 
 			headersKeys,
 			request.Method == HttpMethod.Post
-				? _joinedHeadersForPostRequest
-				: _joinedHeadersForOtherRequest,
+				? SignatureHeaders.JoinedHeadersForPostRequest
+				: SignatureHeaders.JoinedHeadersForOtherRequest,
 			headersValues,
 			_hash, 
 			_signer,
@@ -92,7 +92,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", request)
 		};
 
-		return (HeadersForOtherRequest, values);
+		return (SignatureHeaders.HeadersForOtherRequest, values);
 	}
 	
 	private (string[] headers, string[] values) RetrieveHeadersForPostRequest(HttpRequestMessage request)
@@ -107,7 +107,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			GetHeader("x-amz-pay-region", request)
 		};
 
-		return (_headersForPostRequest, values);
+		return (SignatureHeaders.HeadersForPostRequest, values);
 			
 		string getIdempotencyHeader()
 		{
@@ -124,7 +124,12 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			: string.Empty;
 	}
 	
-	private static readonly string[] _headersForPostRequest = new[]
+
+}
+
+internal static class SignatureHeaders
+{
+	public static readonly string[] HeadersForPostRequest = new[]
 	{
 		"accept", 
 		"content-type", 
@@ -134,9 +139,9 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 		"x-amz-pay-region"
 	};
 	
-	private static string _joinedHeadersForPostRequest = string.Join(";", _headersForPostRequest);
+	public static string JoinedHeadersForPostRequest = string.Join(";", HeadersForPostRequest);
 	
-	private static string[] HeadersForOtherRequest = new[]
+	public static string[] HeadersForOtherRequest = new[]
 	{
 		"accept", 
 		"content-type", 
@@ -145,5 +150,5 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 		"x-amz-pay-region"
 	};
 	
-	private static string _joinedHeadersForOtherRequest = string.Join(";", HeadersForOtherRequest);
+	public static string JoinedHeadersForOtherRequest = string.Join(";", HeadersForOtherRequest);
 }
