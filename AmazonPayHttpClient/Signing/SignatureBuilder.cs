@@ -26,13 +26,13 @@ internal sealed partial class SignatureBuilder
 	}
 
 
-	public Task<(byte[] signature, string headers)> Build()
+	public byte[] Build()
 	{
 		var canonicalRequest = BuildCanonicalRequest();
 		var stringToSign = BuildStringToSign(canonicalRequest);
 		var sign = BuildSign(stringToSign);
 
-		return Task.FromResult((sign, _joinedHeaderKeys));
+		return sign;
 	}
 
 	private string BuildStringToSign(string request)

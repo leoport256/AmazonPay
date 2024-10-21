@@ -60,40 +60,40 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 			? await request.Content.ReadAsStringAsync()
 			: null;
 
-		var builder = request.Method == HttpMethod.Post
+		var (builder, signedHeaders) = request.Method == HttpMethod.Post
 			? CreateSignatureBuilderForPost(request.Headers, request.RequestUri, content)
 			: CreateSignatureBuilderForOther(request.Headers, request.RequestUri, content, request.Method);
 		
-		var (signBytes, signedHeaders) = await builder.Build();
+		var signBytes = builder.Build();
 		var signature = Convert.ToBase64String(signBytes);
 		return (signature, signedHeaders);
 	}
 
-	private SignatureBuilder CreateSignatureBuilderForPost(HttpHeaders headers,  Uri?  uri, string? content)
+	private (SignatureBuilder, string) CreateSignatureBuilderForPost(HttpHeaders headers,  Uri?  uri, string? content)
 	{
 		var headersValues = RetrieveHeadersForPostRequest(headers);
-		return new SignatureBuilder(uri, 
+		return (new SignatureBuilder(uri, 
 			content, 
 			SignatureHeaders.HeadersForPostRequest,
 			SignatureHeaders.JoinedHeadersForPostRequest,
 			headersValues,
 			_hash, 
 			_signer,
-			HttpMethod.Post.Method);
+			HttpMethod.Post.Method), SignatureHeaders.JoinedHeadersForPostRequest);
 	}
 
-	private SignatureBuilder CreateSignatureBuilderForOther(HttpHeaders headers, Uri? uri,
+	private (SignatureBuilder, string) CreateSignatureBuilderForOther(HttpHeaders headers, Uri? uri,
 		string? content, HttpMethod method)
 	{
 		var  headersValues = RetrieveHeaders(headers);
-		return new SignatureBuilder(uri,
+		return (new SignatureBuilder(uri,
 			content,
 			SignatureHeaders.HeadersForOtherRequest,
 			SignatureHeaders.JoinedHeadersForOtherRequest,
 			headersValues,
 			_hash,
 			_signer,
-			method.Method);
+			method.Method), SignatureHeaders.JoinedHeadersForOtherRequest);
 	}
 
 	private string[] RetrieveHeaders(HttpHeaders headers)
