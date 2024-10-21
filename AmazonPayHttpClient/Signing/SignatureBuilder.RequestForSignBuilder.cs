@@ -10,7 +10,7 @@ internal sealed partial class SignatureBuilder
 	private string BuildCanonicalRequest()
 	{
 		
-		var builder = new StringBuilder();
+		var builder = new StringBuilder(512);
 
 		builder.Append(_method).
 			Append(LineSeparator).

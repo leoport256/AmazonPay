@@ -46,7 +46,7 @@ public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: D
 	
 	private string BuildAuthorizationHeader(string signature, string signedHeaders)
 	{
-		var authorizationBuilder = new StringBuilder()
+		var authorizationBuilder = new StringBuilder(512)
 			.Append("PublicKeyId=").Append(_publicKeyProvider.PublicKey).Append(", ").Append("SignedHeaders=")
 			.Append(signedHeaders)
 			.Append(", Signature=").Append(signature);
