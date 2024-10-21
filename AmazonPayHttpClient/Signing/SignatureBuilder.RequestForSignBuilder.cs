@@ -30,7 +30,10 @@ internal sealed partial class SignatureBuilder
 	{
 		for(var i = 0; i < Math.Min(headerKeys.Length, headerValues.Length); ++i)
 		{
-			builder.Append($"{headerKeys[i]}:{headerValues[i]}{LineSeparator}");
+			builder.Append(headerKeys[i]).
+				Append(':').
+				Append(headerValues[i]).
+				Append(LineSeparator);
 		}
 		
 		builder.
