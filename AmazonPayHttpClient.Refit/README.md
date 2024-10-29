@@ -1,0 +1,1 @@
+Refit interface for AmazonPayHttpClient nuget-package.

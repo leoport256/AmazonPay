@@ -1,12 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Authors>Leo Port</Authors>
-        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+        <Authors>leoport256</Authors>
+        <Title>AmazonPayHttpClient.Refit</Title>
+        <Copyright>Leo Port</Copyright>
+        <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
+        <PackageTags>.NET 8.0</PackageTags>
+        <Description>Refit interface for AmazonPayHttpClient nuget-package.</Description>
+        <PackageProjectUrl>https://github.com/leoport256/AmazonPay</PackageProjectUrl>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Refit" Version="7.0.0" />

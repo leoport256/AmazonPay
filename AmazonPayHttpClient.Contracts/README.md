@@ -1,0 +1,1 @@
+Types for AmazonPayHttpClient nuget-package marked for use with System.Text.Json
