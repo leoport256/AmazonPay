@@ -29,4 +29,7 @@
     <ItemGroup>
       <ProjectReference Include="..\AmazonPayHttpClient\AmazonPayHttpClient.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 </Project>

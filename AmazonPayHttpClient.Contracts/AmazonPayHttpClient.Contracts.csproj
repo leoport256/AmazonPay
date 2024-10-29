@@ -14,5 +14,7 @@
         <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
         <PackageTags>.NET 8.0</PackageTags>
     </PropertyGroup>
-
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 </Project>
