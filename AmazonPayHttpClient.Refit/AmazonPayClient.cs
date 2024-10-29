@@ -57,7 +57,7 @@ public static class  AmazonPayClient
 		return RestService.For<TClient>(httpClient, MakeRefitSettings(settings));
 	}
 	
-	public static TClient FoJapan<TClient, TPrivateKeyProvider, TPublicKeyProvider>(
+	public static TClient ForJapan<TClient, TPrivateKeyProvider, TPublicKeyProvider>(
 		TPrivateKeyProvider privateKeyProvider, 		
 		TPublicKeyProvider publicKeyProvider, 
 		RefitSettings? settings = null,
@@ -74,7 +74,7 @@ public static class  AmazonPayClient
 		return RestService.For<TClient>(httpClient, MakeRefitSettings(settings));
 	}
 	
-	public static TClient FoUnitedStates<TClient, TPrivateKeyProvider, TPublicKeyProvider>(
+	public static TClient ForUnitedStates<TClient, TPrivateKeyProvider, TPublicKeyProvider>(
 		TPrivateKeyProvider privateKeyProvider, 		
 		TPublicKeyProvider publicKeyProvider, 
 		RefitSettings? settings = null,

@@ -4,6 +4,10 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Leo Port</Authors>
+        <PackageLicenseUrl>https://licenses.nuget.org/MIT 
+</PackageLicenseUrl>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Refit" Version="7.1.2" />

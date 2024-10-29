@@ -1,8 +1,6 @@
 namespace AmazonPayHttpClient;
 
-public interface IPrivateKeyProvider
+public interface IPublicKeyProvider
 {
-	char[]? Provide();
+	string PublicKey { get; }
 }
-
-
