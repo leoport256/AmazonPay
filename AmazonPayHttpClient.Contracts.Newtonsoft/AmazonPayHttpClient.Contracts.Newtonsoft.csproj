@@ -14,6 +14,8 @@
         <PackageProjectUrl>https://github.com/leoport256/AmazonPay</PackageProjectUrl>
         <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
         <PackageTags>.NET 8.0</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
     </PropertyGroup>
 
     <ItemGroup>
