@@ -11,9 +11,9 @@
         <Copyright>Leo Port</Copyright>
         <PackageProjectUrl>https://github.com/leoport256/AmazonPay</PackageProjectUrl>
         <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
-        <PackageTags>.NET 8.0</PackageTags>
+        <PackageTags>.NET8.0 .NET9.0</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.1</Version>
+        <Version>2.0.0</Version>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
