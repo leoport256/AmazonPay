@@ -48,11 +48,4 @@ internal sealed class ReviewSessionCommand: IReviewSessionService
 
 		return new Result(redirectUrl);
 	}
-
-	private void ThrowOnSuccessStatusCode(string  checkoutSessionId)
-	{
-		throw new InvalidOperationException($"Session {checkoutSessionId} does not found");
-
-	}
-
 }
