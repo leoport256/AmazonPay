@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,22 +14,27 @@
         <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
         <PackageTags>.NET 8.0</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup  Condition="'$(TargetFramework)'=='net8.0'">
+
         <PackageReference Include="Refit" Version="7.2.22" />
         <PackageReference Include="Refit.Newtonsoft.Json" Version="7.1.2" />
 
         <PackageReference Include="Refit.HttpClientFactory" Version="7.1.2" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
+    <ItemGroup  Condition="'$(TargetFramework)'=='net9.0'">
+        <PackageReference Include="Refit" Version="8.0.0" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="8.0.0" />
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\AmazonPayHttpClient.Contracts.Newtonsoft\AmazonPayHttpClient.Contracts.Newtonsoft.csproj" />
       <ProjectReference Include="..\AmazonPayHttpClient\AmazonPayHttpClient.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\AmazonPayHttpClient\AmazonPayHttpClient.csproj" />
-    </ItemGroup>
+
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>

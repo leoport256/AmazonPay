@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,8 +13,10 @@
         <RepositoryUrl>https://github.com/leoport256/AmazonPay</RepositoryUrl>
         <PackageTags>.NET 8.0</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 
     </PropertyGroup>
+    
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
