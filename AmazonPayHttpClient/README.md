@@ -7,7 +7,7 @@ https://developer.amazon.com/docs/amazon-pay/intro.html through HttpClient
 No additional dependency
 
 
-## Принципы использования
+## Basic usage
 
 All interfaces typically is generic with two paramameters 
 
