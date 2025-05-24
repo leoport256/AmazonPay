@@ -58,4 +58,6 @@ public interface IAmazonPayClient
 	[Get("/v2/refunds/{refundId}")]
 	Task<ApiResponse<RefundResponse>> GetRefund(string refundId);	
 
+	[Post("/v2/deliveryTrackers")]
+	Task<ApiResponse<DeliveryTrackerResponse>> CreateDeliveryTracker(DeliveryTrackerRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
 }
