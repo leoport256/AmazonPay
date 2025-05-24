@@ -6,16 +6,6 @@ public sealed class CheckoutSessionResponse
 {
     public CheckoutSessionResponse()
     {
-        // WebCheckoutDetails = new WebCheckoutDetails();
-        // PaymentDetails = new PaymentDetails();
-        // MerchantMetadata = new MerchantMetadata();
-        // Buyer = new Buyer();
-        // ProviderMetadata = new ProviderMetadata();
-        // ShippingAddress = new Address();
-        // BillingAddress = new Address();
-        // PaymentPreferences = new List<PaymentPreferences>();
-        // Constraints = new List<Constraint>();
-        // RecurringMetadata = new RecurringMetadata();
     }
 
     /// <summary>
