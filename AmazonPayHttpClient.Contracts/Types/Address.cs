@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public sealed class Address : AddressBase
+public class Address : AddressBase
 {
     /// <summary>
     /// County of the address.

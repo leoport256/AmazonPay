@@ -1,0 +1,12 @@
+﻿using System.Text.Json.Serialization;
+
+namespace AmazonPayHttpClient.Contracts;
+
+public class GetReportSchedulesResponse 
+{
+     /// <summary>
+     /// A list of report schedule objects matching the search criteria.
+     /// </summary>
+     [JsonPropertyName("reportSchedules")]
+     public List<ReportSchedule>? ReportSchedules { get; set; }
+}

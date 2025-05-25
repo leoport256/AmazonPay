@@ -7,11 +7,6 @@ namespace AmazonPayHttpClient.Contracts;
 /// </summary>
 public sealed class AddressRestrictions
 {
-    public AddressRestrictions()
-    {
-        Restrictions = new Dictionary<string, Restriction>();
-    }
-
     /// <summary>
     /// Specifies whether addresses that match restrictions configuration should or should not be restricted. Supported values: Allowed / NotAllowed.
     /// </summary>
@@ -27,10 +22,10 @@ public sealed class AddressRestrictions
 
     [JsonIgnore] 
     public bool IsEmpty => !Restrictions.Any();
-        
+
     /// <summary>
     /// Hash of country-level restrictions that determine which addresses should or should not be restricted.
     /// </summary>
     [JsonPropertyName("restrictions")]
-    public Dictionary<string, Restriction> Restrictions { get; }
+    public Dictionary<string, Restriction> Restrictions { get; } = [];
 }
