@@ -1,9 +1,12 @@
-﻿namespace AmazonPayHttpClient.Contracts;
+﻿using System.Text.Json.Serialization;
+
+namespace AmazonPayHttpClient.Contracts;
 
 /// <summary>
 /// Channel of transaction.
 /// </summary>
 //[JsonConverter(typeof(StringEnumConverter))]
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Channel
 {
     Web,

@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace AmazonPayHttpClient.Contracts
 {
     /// <summary>
     /// Report Types
     /// </summary>
-   // [JsonConverter(typeof(StringEnumConverter))]
+    //[JsonConverter(typeof(StringEnumConverter))]
+	[JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ProcessingStatus
     {
         /// <summary>

@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace AmazonPayHttpClient.Contracts
 {
     /// <summary>
     /// Type of Business.
     /// </summary>
    // [JsonConverter(typeof(StringEnumConverter))]
+   [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum BusinessType
     {
         /// <summary>

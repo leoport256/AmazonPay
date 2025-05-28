@@ -75,7 +75,7 @@ public interface IAmazonPayClient
 		[Query(CollectionFormat.Csv)][AliasAs("processingStatuses")]ProcessingStatus[]? processingStatuses = null,
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdSince")]DateTime? createdSince = null, 
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdUntil")]DateTime? createdUntil = null,
-		[Query][AliasAs("pageSize")]int? pageSize = null, 
+		[Query][AliasAs("pageSize")]int pageSize = 10, 
 		[Query][AliasAs("nextToken")]string? nextToken = null);
 
 	[Get("/v2/report-schedules")]
@@ -86,7 +86,7 @@ public interface IAmazonPayClient
 	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements(		
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("startTime")]DateTime? startTime = null, 
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("endTime")]DateTime? endTime = null,
-		[Query][AliasAs("pageSize")]int? pageSize = null, 
+		[Query][AliasAs("pageSize")]int pageSize = 10, 
 		[Query][AliasAs("nextToken")]string? nextToken = null);	
 
 	

@@ -10,7 +10,6 @@ namespace AmazonPayHttpClient.Contracts;
 public enum CheckoutSessionScope
 {
     /// <summary>
-     
     /// Request access to buyer name.
     /// </summary>
     [EnumMember(Value = "name")]
