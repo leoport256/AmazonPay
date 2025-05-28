@@ -8,7 +8,7 @@ public class GetReportDocumentResponse
      /// Report Document Id Identifier.
      /// </summary>
      [JsonPropertyName("reportDocumentId")]
-     public string? ReportDocumentId { get; set; }
+     public required string ReportDocumentId { get; set; }
 
      /// <summary>
      /// URL Identifier.

@@ -1,4 +1,5 @@
-﻿using AmazonPayHttpClient.Contracts;
+﻿using Amazon.Pay.API.WebStore.AccountManagement;
+using AmazonPayHttpClient.Contracts;
 using Refit;
 
 namespace AmazonPayHttpClient.Refit;
@@ -20,6 +21,12 @@ public interface IAmazonPayClient
 	Task<ApiResponse<CheckoutSessionResponse>> CompleteCheckoutSession(
 		string checkoutSessionId,
 		CompleteCheckoutSessionRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
+	
+		
+	[Post("/v2/checkoutSessions/{checkoutSessionId}/finalize")]
+	Task<ApiResponse<CheckoutSessionResponse>> FinalizeCheckoutSessionRequest(string checkoutSessionId, FinalizeCheckoutSessionRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+
 	
 	[Get("/v2/chargePermissions/{chargePermissionId}")]
 	Task<ApiResponse<ChargePermissionResponse>> GetChargePermission(string chargePermissionId);
@@ -59,5 +66,48 @@ public interface IAmazonPayClient
 	Task<ApiResponse<RefundResponse>> GetRefund(string refundId);	
 
 	[Post("/v2/deliveryTrackers")]
-	Task<ApiResponse<DeliveryTrackerResponse>> CreateDeliveryTracker(DeliveryTrackerRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+	Task<ApiResponse<DeliveryTrackerResponse>> CreateDeliveryTracker(DeliveryTrackerRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
+	
+	
+	[Get("/v2/reports")]
+	Task<ApiResponse<GetReportsResponse>> GetReports([Query(".","search")]GetReportsRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	[Get("/v2/report-schedules")]
+	Task<ApiResponse<GetReportSchedulesResponse>> GetReportSchedules([Query(".","search")]GetReportSchedulesRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
+	
+	[Get("/v2/report-schedules")]
+	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements([Query(".","search")]object request);	
+
+	
+	[Get("/v2/report/{id}")]
+	Task<ApiResponse<Report>> GetReport(string id);	
+
+	[Post("/v2/reports")]
+	Task<ApiResponse<CreateReportResponse>> CreateReport(CreateReportRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	
+	[Get("/v2/report-documents/{id}")]
+	Task<ApiResponse<GetReportDocumentResponse>> GetReportDocument(string id);	
+	
+	[Get("/v2/report-schedules/{id}")]
+	Task<ApiResponse<ReportSchedule>> GetReportSchedule(string id);	
+
+	[Post("/v2/report-schedules")]
+	Task<ApiResponse<CreateReportScheduleResponse>> CreateReportSchedule(CreateReportScheduleRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	[Delete("/v2/report-schedules/{id}")]
+	Task<ApiResponse<CancelReportScheduleResponse>> CancelReportSchedule(string id);	
+
+	
+	[Post("/v2/merchantAccounts")]
+	Task<ApiResponse<RegisterAmazonPayAccountResponse>> RegisterAmazonPayAccount(RegisterAmazonPayAccountRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	
+	[Patch("/v2/merchantAccounts/{merchantAccountId}")]
+	Task<ApiResponse<UpdateAmazonPayAccountResponse>> UpdateAmazonPayAccount(string merchantAccountId, UpdateAmazonPayAccountRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	[Delete("/v2/merchantAccounts/{merchantAccountId}")]
+	Task<ApiResponse<DeleteAmazonPayAccountResponse>> DeleteAmazonPayAccount(string merchantAccountId, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+
+	
 }
