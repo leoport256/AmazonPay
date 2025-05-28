@@ -2,11 +2,11 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportSchedulesResponse 
+public class GetReportSchedulesResponse
 {
      /// <summary>
      /// A list of report schedule objects matching the search criteria.
      /// </summary>
      [JsonPropertyName("reportSchedules")]
-     public List<ReportSchedule>? ReportSchedules { get; set; }
+     public required List<ReportSchedule> ReportSchedules { get; set; } = [];
 }

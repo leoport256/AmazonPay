@@ -70,13 +70,24 @@ public interface IAmazonPayClient
 	
 	
 	[Get("/v2/reports")]
-	Task<ApiResponse<GetReportsResponse>> GetReports([Query(".","search")]GetReportsRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+	Task<ApiResponse<GetReportsResponse>> GetReports(
+		[Query(CollectionFormat.Csv)][AliasAs("reportTypes")]ReportTypes[]? reportTypes = null, 
+		[Query(CollectionFormat.Csv)][AliasAs("processingStatuses")]ProcessingStatus[]? processingStatuses = null,
+		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdSince")]DateTime? createdSince = null, 
+		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdUntil")]DateTime? createdUntil = null,
+		[Query][AliasAs("pageSize")]int? pageSize = null, 
+		[Query][AliasAs("nextToken")]string? nextToken = null);
 
 	[Get("/v2/report-schedules")]
-	Task<ApiResponse<GetReportSchedulesResponse>> GetReportSchedules([Query(".","search")]GetReportSchedulesRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
+	Task<ApiResponse<GetReportSchedulesResponse>> GetReportSchedules(
+		[Query(CollectionFormat.Csv)] [AliasAs("reportTypes")] ReportTypes[]? reportTypes = null);
 	
-	[Get("/v2/report-schedules")]
-	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements([Query(".","search")]object request);	
+	[Get("/v2/disbursements")]
+	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements(		
+		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("startTime")]DateTime? startTime = null, 
+		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("endTime")]DateTime? endTime = null,
+		[Query][AliasAs("pageSize")]int? pageSize = null, 
+		[Query][AliasAs("nextToken")]string? nextToken = null);	
 
 	
 	[Get("/v2/report/{id}")]

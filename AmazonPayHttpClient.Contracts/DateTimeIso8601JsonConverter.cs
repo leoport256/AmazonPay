@@ -6,12 +6,10 @@ namespace AmazonPayHttpClient.Contracts;
 
 public class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
 {
-    private const string AmazonDateTimeFormat = "yyyyMMdd\\THHmmss\\Z";
-
     public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var dateStr = reader.GetString();
-        var d = dateStr is not null && DateTime.TryParseExact(dateStr, AmazonDateTimeFormat,
+        var d = dateStr is not null && DateTime.TryParseExact(dateStr, AmazonDateTimeFormat.Format,
             CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AdjustToUniversal, out var parsed)
             ? (DateTime?)DateTime.SpecifyKind(parsed, DateTimeKind.Utc)
             : null;
@@ -26,7 +24,7 @@ public class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
             writer.WriteNullValue();
             return;
         }
-        writer.WriteStringValue(value.Value.ToString(AmazonDateTimeFormat));
+        writer.WriteStringValue(value.Value.ToString(AmazonDateTimeFormat.Format));
     }
 }
     
@@ -34,13 +32,11 @@ public class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
 public class DateTimeIso8601JsonConverter : JsonConverter<DateTime>
 {
     public override bool HandleNull => true;
-        
-    private const string AmazonDateTimeFormat = "yyyyMMdd\\THHmmss\\Z";
 
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var dateStr = reader.GetString();
-        var d = dateStr is not null && DateTime.TryParseExact(dateStr, AmazonDateTimeFormat,
+        var d = dateStr is not null && DateTime.TryParseExact(dateStr, AmazonDateTimeFormat.Format,
             CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AdjustToUniversal, out var parsed)
             ? DateTime.SpecifyKind(parsed, DateTimeKind.Utc)
             : DateTime.MinValue;
@@ -50,6 +46,6 @@ public class DateTimeIso8601JsonConverter : JsonConverter<DateTime>
 
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
-        writer.WriteStringValue(value.ToString(AmazonDateTimeFormat));
+        writer.WriteStringValue(value.ToString(AmazonDateTimeFormat.Format));
     }
 }
