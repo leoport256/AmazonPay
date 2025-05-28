@@ -1,7 +1,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 /// <summary>
 /// Ledger Currencies available for Amazon Pay.

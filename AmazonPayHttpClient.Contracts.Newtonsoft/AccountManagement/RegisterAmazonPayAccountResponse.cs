@@ -1,17 +1,18 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+
 public class RegisterAmazonPayAccountResponse
 {
     /// <summary>
     /// Gets or sets the unique reference id.
     /// </summary>
-    [JsonPropertyName("uniqueReferenceId")]
+    [JsonProperty("uniqueReferenceId")]
     public required string UniqueReferenceId { get; set; }
 
     /// <summary>
     /// Gets or sets the merchant account id.
     /// </summary>
-    [JsonPropertyName("merchantAccountId")]
+    [JsonProperty("merchantAccountId")]
     public required string MerchantAccountId { get; set; }
 }

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 /// <summary>
 /// Type of Business.

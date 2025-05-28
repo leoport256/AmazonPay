@@ -1,4 +1,4 @@
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 public class DeleteAmazonPayAccountRequest
 {

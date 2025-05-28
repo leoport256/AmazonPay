@@ -1,24 +1,25 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+
 public class RegisterAmazonPayAccountRequest
 {
 	/// <summary>
     /// Gets or sets the unique reference id.
     /// </summary>
-    [JsonPropertyName("uniqueReferenceId")]
+    [JsonProperty("uniqueReferenceId")]
     public required string UniqueReferenceId { get; set; }
 
     /// <summary>
     /// Gets or sets the ledger currency.
     /// </summary>
-    [JsonPropertyName("ledgerCurrency")]
+    [JsonProperty("ledgerCurrency")]
     public required LedgerCurrency LedgerCurrency { get; set; }
 
     /// <summary>
     /// Gets or sets the business details.
     /// </summary>
-    [JsonPropertyName("businessInfo")]
+    [JsonProperty("businessInfo")]
     public BusinessInfo BusinessInfo { get; } = new();
 
     /// <summary>
@@ -27,7 +28,7 @@ public class RegisterAmazonPayAccountRequest
     [JsonIgnore]
     public Person PrimaryContactPerson { get; } = new();
 
-    [JsonPropertyName("primaryContactPerson")]
+    [JsonProperty("primaryContactPerson")]
     public Person? PrimaryContactPersonRaw => PrimaryContactPerson.IsEmpty ? null : PrimaryContactPerson;
 
 }

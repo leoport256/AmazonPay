@@ -1,12 +1,14 @@
-using System.Text.Json.Serialization;
 
-namespace AmazonPayHttpClient.Contracts;
+using Newtonsoft.Json;
+
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+
 public class UpdateAmazonPayAccountRequest 
 {
     /// <summary>
     /// Gets or sets the business details.
     /// </summary>
-    [JsonPropertyName("businessInfo")]
+    [JsonProperty("businessInfo")]
     public BusinessInfo BusinessInfo { get; } = new();
 
     /// <summary>
@@ -15,6 +17,6 @@ public class UpdateAmazonPayAccountRequest
     [JsonIgnore]
     public Person PrimaryContactPerson { get; } = new();
 
-    [JsonPropertyName("primaryContactPerson")]
+    [JsonProperty("primaryContactPerson")]
     public Person? PrimaryContactPersonRaw => PrimaryContactPerson.IsEmpty ? null : PrimaryContactPerson;
 }

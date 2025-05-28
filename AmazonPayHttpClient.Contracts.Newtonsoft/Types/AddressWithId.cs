@@ -1,12 +1,12 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
-namespace AmazonPayHttpClient.Contracts;
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 public class AddressWithId : Address
 {
     /// <summary>
     /// Amazon Address ID from shippingAddressList in PayAndShipMultiAddress productType.
     /// </summary>
-    [JsonPropertyName("addressId")]
+    [JsonProperty("addressId")]
     public required string AddressId { get; set; }
 }

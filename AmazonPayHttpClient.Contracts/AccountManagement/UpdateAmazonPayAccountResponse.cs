@@ -1,5 +1,4 @@
-namespace Amazon.Pay.API.WebStore.AccountManagement;
-
+namespace AmazonPayHttpClient.Contracts;
 public class UpdateAmazonPayAccountResponse 
 {
 
