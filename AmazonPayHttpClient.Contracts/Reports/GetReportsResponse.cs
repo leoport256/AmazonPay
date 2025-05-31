@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportsResponse
+public sealed class GetReportsResponse
 {
      /// <summary>
      /// A list of report objects matching the search criteria.

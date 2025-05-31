@@ -2,13 +2,8 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class BusinessInfo
+public sealed class BusinessInfo
 {
-    public BusinessInfo()
-    {
-        BusinessAddress = new AddressInfo();
-    }
-
     /// <summary>
     /// Gets or sets the business type.
     /// </summary>
@@ -19,17 +14,17 @@ public class BusinessInfo
     /// Gets or sets the country of establishment.
     /// </summary>
     [JsonPropertyName("countryOfEstablishment")]
-    public string CountryOfEstablishment { get; set; }
+    public string? CountryOfEstablishment { get; set; }
 
     /// <summary>
     /// Gets or sets the business legal name.
     /// </summary>
     [JsonPropertyName("businessLegalName")]
-    public string BusinessLegalName { get; set; }
+    public string? BusinessLegalName { get; set; }
 
     /// <summary>
     /// Gets or sets the business address.
     /// </summary>
     [JsonPropertyName("businessAddress")]
-    public AddressInfo BusinessAddress { get; set; }
+    public AddressInfo BusinessAddress { get; set; } = new();
 }

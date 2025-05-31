@@ -2,13 +2,8 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class Person
+public sealed class Person
 {
-    public Person()
-    {
-        ResidentialAddress = new AddressInfo();
-    }
-
     /// <summary>
     /// Gets or sets the person full name.
     /// </summary>
@@ -21,7 +16,7 @@ public class Person
     /// Gets or sets the residential address.
     /// </summary>
     [JsonIgnore]
-    public AddressInfo ResidentialAddress { get; set; }
+    public AddressInfo ResidentialAddress { get; set; } = new();
 
 
     [JsonPropertyName("residentialAddress")]
@@ -31,5 +26,5 @@ public class Person
     /// Gets or sets the date of birth.
     /// </summary>
     [JsonPropertyName("dateOfBirth")]
-    public string DateOfBirth { get; set; }
+    public DateTime? DateOfBirth { get; set; }
 }

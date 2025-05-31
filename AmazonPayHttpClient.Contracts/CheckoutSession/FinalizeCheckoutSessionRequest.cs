@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class FinalizeCheckoutSessionRequest
+public sealed class FinalizeCheckoutSessionRequest
 {
 	       /// <summary>
         /// Initializes a new instance of the FinalizeCheckoutSessionRequest class with specified amount and currency.

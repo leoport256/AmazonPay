@@ -1,5 +1,5 @@
 namespace AmazonPayHttpClient.Contracts;
-public class UpdateAmazonPayAccountResponse 
+public sealed class UpdateAmazonPayAccountResponse 
 {
 
 }

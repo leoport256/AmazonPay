@@ -11,7 +11,7 @@ namespace AmazonPayHttpClient.Contracts;
 /// Removes fractional part from decimals if not required. Important for Japanse Yen transactions as API may throw an exception otherwise.
 /// </remarks>
 ///
-internal class DecimalJsonConverter : JsonConverter<decimal>
+internal sealed class DecimalJsonConverter : JsonConverter<decimal>
 {
     public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

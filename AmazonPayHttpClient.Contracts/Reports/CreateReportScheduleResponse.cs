@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class CreateReportScheduleResponse
+public sealed class CreateReportScheduleResponse
 {
      /// <summary>
      /// Report Schedule Id Identifier.

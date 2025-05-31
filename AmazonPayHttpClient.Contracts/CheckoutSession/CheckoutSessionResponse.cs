@@ -50,7 +50,7 @@ public sealed class CheckoutSessionResponse
     /// State of the Checkout Session object.
     /// </summary>
     [JsonPropertyName("statusDetails")]
-    public StatusDetails StatusDetails { get;  set; }
+    public StatusDetails? StatusDetails { get;  set; }
 
     /// <summary>
     /// Supplementary data.
@@ -62,7 +62,7 @@ public sealed class CheckoutSessionResponse
     /// Merchant identifer of the Solution Provider (SP) - also known as ecommerce provider.
     /// </summary>
     [JsonPropertyName("platformId")]
-    public string PlatformId { get; set; }
+    public string? PlatformId { get; set; }
 
     /// <summary>
     /// Payment service provider (PSP)-provided order information.
@@ -129,7 +129,7 @@ public sealed class CheckoutSessionResponse
     /// The environment of the Amazon Pay API (live or sandbox).
     /// </summary>
     [JsonPropertyName("releaseEnvironment")]
-    public string ReleaseEnvironment { get;  set; }
+    public string ReleaseEnvironment { get; set; } = "sandbox";
 
     /// <summary>
     /// Configure OneTime or Recurring payment chargePermissionType

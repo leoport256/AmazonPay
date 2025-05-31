@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportSchedulesResponse
+public sealed class GetReportSchedulesResponse
 {
      /// <summary>
      /// A list of report schedule objects matching the search criteria.

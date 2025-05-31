@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class PaymentMethodOnFileMetadata
+public sealed class PaymentMethodOnFileMetadata
 {
     /// <summary>
     /// Whether or not to trigger only setup flow to setup payment method on file.

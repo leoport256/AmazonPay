@@ -1,6 +1,6 @@
 ﻿namespace AmazonPayHttpClient.Contracts;
 
-public class CancelReportScheduleRequest 
+public sealed class CancelReportScheduleRequest 
 {
 
 }

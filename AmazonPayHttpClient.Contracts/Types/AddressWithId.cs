@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class AddressWithId : Address
+public sealed class AddressWithId : Address
 {
     /// <summary>
     /// Amazon Address ID from shippingAddressList in PayAndShipMultiAddress productType.

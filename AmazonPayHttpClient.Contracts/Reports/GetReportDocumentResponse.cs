@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportDocumentResponse
+public sealed class GetReportDocumentResponse
 {
      /// <summary>
      /// Report Document Id Identifier.

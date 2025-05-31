@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportsRequest
+public sealed class GetReportsRequest
 {
      public GetReportsRequest(List<ReportTypes>? reportTypes = null, List<ProcessingStatus>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, int pageSize = 10, string? nextToken = null)
      {

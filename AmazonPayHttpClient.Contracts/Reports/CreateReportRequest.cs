@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class CreateReportRequest
+public sealed class CreateReportRequest
 {
      /// <summary>
      /// Type of report to be created.

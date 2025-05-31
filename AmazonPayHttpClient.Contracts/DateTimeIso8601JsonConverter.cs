@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
+internal sealed class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
 {
     public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
@@ -29,7 +29,7 @@ public class DateTimeIso8601NullableJsonConverter : JsonConverter<DateTime?>
 }
     
     
-public class DateTimeIso8601JsonConverter : JsonConverter<DateTime>
+internal sealed class DateTimeIso8601JsonConverter : JsonConverter<DateTime>
 {
     public override bool HandleNull => true;
 

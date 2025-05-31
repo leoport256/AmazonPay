@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
-public class RegisterAmazonPayAccountResponse
+public sealed class RegisterAmazonPayAccountResponse
 {
     /// <summary>
     /// Gets or sets the unique reference id.

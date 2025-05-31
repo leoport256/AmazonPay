@@ -14,17 +14,6 @@ public sealed class CreateCheckoutSessionRequest : UpdateCheckoutSessionRequest
     {
         WebCheckoutDetails.CheckoutReviewReturnUrl = checkoutReviewReturnUrl;
         StoreId = storeId;
-        DeliverySpecifications = new DeliverySpecifications();
-        AddressDetails = new AddressDetails();
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the CreateCheckoutSessionRequest class.
-    /// </summary>
-    public CreateCheckoutSessionRequest()
-    {
-        DeliverySpecifications = new DeliverySpecifications();
-        AddressDetails = new AddressDetails();
     }
 
     /// <summary>
@@ -37,8 +26,6 @@ public sealed class CreateCheckoutSessionRequest : UpdateCheckoutSessionRequest
     {
         WebCheckoutDetails.CheckoutReviewReturnUrl = checkoutReviewReturnUrl;
         StoreId = storeId;
-        DeliverySpecifications = new DeliverySpecifications();
-        AddressDetails = new AddressDetails();
         CheckoutSessionScope = scopes;
     }
 
@@ -52,13 +39,13 @@ public sealed class CreateCheckoutSessionRequest : UpdateCheckoutSessionRequest
     /// Specify shipping restrictions to prevent buyers from selecting unsupported addresses from their Amazon address book.
     /// </summary>
     [JsonPropertyName("deliverySpecifications")]
-    public DeliverySpecifications DeliverySpecifications { get;  }
+    public DeliverySpecifications DeliverySpecifications { get;  } = new();
 
     /// <summary>
     /// Specify shipping address when CheckoutMode=ProcessOrder (Additional Payment Button, APB, mode).
     /// </summary>
     [JsonIgnore]
-    public AddressDetails AddressDetails { get; }
+    public AddressDetails AddressDetails { get; } = new();
 
     /// <summary>
     /// Specify shipping address when CheckoutMode=ProcessOrder (Additional Payment Button, APB, mode).
@@ -70,6 +57,6 @@ public sealed class CreateCheckoutSessionRequest : UpdateCheckoutSessionRequest
     /// Checkout Session Scopes
     /// </summary>
     [JsonPropertyName("scopes")]
-    public CheckoutSessionScope[] CheckoutSessionScope { get; }
+    public CheckoutSessionScope[]? CheckoutSessionScope { get; }
 
 }

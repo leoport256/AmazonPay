@@ -1,6 +1,6 @@
 namespace AmazonPayHttpClient.Contracts;
 
-public class AddressInfo : AddressInfoBase
+public sealed class AddressInfo : AddressInfoBase
 {
         
 }

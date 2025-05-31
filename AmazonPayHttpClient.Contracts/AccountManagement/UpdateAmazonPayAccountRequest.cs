@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
-public class UpdateAmazonPayAccountRequest 
+public sealed class UpdateAmazonPayAccountRequest 
 {
     /// <summary>
     /// Gets or sets the business details.

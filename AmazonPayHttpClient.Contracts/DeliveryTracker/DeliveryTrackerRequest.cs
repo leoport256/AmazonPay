@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class DeliveryTrackerRequest
+public sealed class DeliveryTrackerRequest
 {
 	public DeliveryTrackerRequest()
 	{

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class ReportSchedule
+public sealed class ReportSchedule
 {
     /// <summary>
     /// The report schedule identifier.

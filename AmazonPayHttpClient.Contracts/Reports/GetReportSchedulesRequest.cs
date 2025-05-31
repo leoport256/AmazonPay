@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
 
-public class GetReportSchedulesRequest
+public sealed class GetReportSchedulesRequest
 {
      /// <summary>
      /// List of report types
