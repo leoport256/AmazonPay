@@ -1,13 +1,13 @@
 
 using System.Text.Json.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 /// <summary>
 /// Ledger Currencies available for Amazon Pay.
 /// </summary>
-//[JsonConverter(typeof(StringEnumConverter))]
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(StringEnumConverter))]
 public enum LedgerCurrency
 {
     /// <summary>

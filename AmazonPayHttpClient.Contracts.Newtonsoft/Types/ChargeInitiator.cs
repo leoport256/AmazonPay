@@ -1,12 +1,12 @@
 ﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 /// <summary>
 /// Represents who initiated the payment.
 /// </summary>
-//[JsonConverter(typeof(StringEnumConverter))]
-[JsonConverter(typeof(JsonStringEnumConverter))]
+[JsonConverter(typeof(StringEnumConverter))]
 public enum ChargeInitiator
 {
     // ReSharper disable once InconsistentNaming

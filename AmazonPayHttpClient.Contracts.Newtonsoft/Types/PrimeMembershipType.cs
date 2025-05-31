@@ -1,8 +1,12 @@
-﻿namespace AmazonPayHttpClient.Contracts.Newtonsoft;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
 /// <summary>
 /// Prime membership types for which the buyer is eligible.
 /// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
 public enum PrimeMembershipType
 {
     NONE = 0,

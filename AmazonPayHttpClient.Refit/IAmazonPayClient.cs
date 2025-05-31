@@ -1,5 +1,4 @@
-﻿using Amazon.Pay.API.WebStore.AccountManagement;
-using AmazonPayHttpClient.Contracts;
+﻿using AmazonPayHttpClient.Contracts;
 using Refit;
 
 namespace AmazonPayHttpClient.Refit;
