@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class RegisterAmazonPayAccountResponse
+public sealed class RegisterAmazonPayAccountResponse
 {
     /// <summary>
     /// Gets or sets the unique reference id.

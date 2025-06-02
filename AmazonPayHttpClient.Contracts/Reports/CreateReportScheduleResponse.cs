@@ -4,9 +4,9 @@ namespace AmazonPayHttpClient.Contracts;
 
 public sealed class CreateReportScheduleResponse
 {
-     /// <summary>
-     /// Report Schedule Id Identifier.
-     /// </summary>
-     [JsonPropertyName("reportScheduleId")]
-     public required string ReportScheduleId { get; set; }
+	/// <summary>
+	/// Report Schedule Id Identifier.
+	/// </summary>
+	[JsonPropertyName("reportScheduleId")]
+	public required string ReportScheduleId { get; set; }
 }

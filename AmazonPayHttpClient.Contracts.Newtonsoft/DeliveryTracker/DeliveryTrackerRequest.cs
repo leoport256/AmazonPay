@@ -2,13 +2,8 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class DeliveryTrackerRequest
+public sealed class DeliveryTrackerRequest
 {
-	public DeliveryTrackerRequest()
-	{
-		
-	}
-	
 	public DeliveryTrackerRequest(string objectId, bool objectIsChargePermission, string trackingNumber, string carrierCode)
 	{
 		if (objectIsChargePermission)

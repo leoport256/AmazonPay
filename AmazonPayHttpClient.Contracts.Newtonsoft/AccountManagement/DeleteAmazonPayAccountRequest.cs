@@ -1,6 +1,6 @@
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class DeleteAmazonPayAccountRequest
+public sealed class DeleteAmazonPayAccountRequest
 {
         
 }

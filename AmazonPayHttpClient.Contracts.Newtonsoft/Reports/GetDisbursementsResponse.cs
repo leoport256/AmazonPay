@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class GetDisbursementsResponse
+public sealed class GetDisbursementsResponse
 {
 	[JsonProperty("disbursements")]
 	public required List<Disbursement> Disbursements { get; set; } = [];

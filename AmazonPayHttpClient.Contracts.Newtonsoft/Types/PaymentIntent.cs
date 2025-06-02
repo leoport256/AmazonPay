@@ -9,7 +9,7 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum PaymentIntent
 {
-    Confirm,
-    Authorize,
-    AuthorizeWithCapture
+	Confirm,
+	Authorize,
+	AuthorizeWithCapture
 }

@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class CreateReportScheduleResponse
+public sealed class CreateReportScheduleResponse
 {
      /// <summary>
      /// Report Schedule Id Identifier.

@@ -10,9 +10,9 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum FrequencyUnit
 {
-    Year,
-    Month,
-    Week,
-    Day,
-    Variable
+	Year,
+	Month,
+	Week,
+	Day,
+	Variable
 }

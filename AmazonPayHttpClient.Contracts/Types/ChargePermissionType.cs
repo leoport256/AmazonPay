@@ -9,6 +9,6 @@ namespace AmazonPayHttpClient.Contracts;
 public enum ChargePermissionType
 {
 
-    OneTime,
-    Recurring
+	OneTime,
+	Recurring
 }

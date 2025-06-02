@@ -10,27 +10,27 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum LedgerCurrency
 {
-    /// <summary>
-    /// British Pound
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    GBP,
+	/// <summary>
+	/// British Pound
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	GBP,
 
-    /// <summary>
-    /// Euro
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    EUR,
+	/// <summary>
+	/// Euro
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	EUR,
 
-    /// <summary>
-    /// Japanese Yen
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    JPY,
+	/// <summary>
+	/// Japanese Yen
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	JPY,
 
-    /// <summary>
-    /// United States Dollar
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    USD
+	/// <summary>
+	/// United States Dollar
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	USD
 }

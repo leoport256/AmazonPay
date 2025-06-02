@@ -9,5 +9,6 @@ namespace AmazonPayHttpClient.Contracts;
 /// </remarks>
 public enum Environment
 {
-    Live, Sandbox
+	Live,
+	Sandbox
 }

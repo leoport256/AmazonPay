@@ -1,4 +1,3 @@
-using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace AmazonPayHttpClient.Contracts;
@@ -9,15 +8,15 @@ namespace AmazonPayHttpClient.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum SpecialRestriction
 {
-    /// <summary>
-    /// Marks PO box addresses in US, CA, GB, FR, DE, ES, PT, IT, AU as restricted
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    RestrictPOBoxes,
+	/// <summary>
+	/// Marks PO box addresses in US, CA, GB, FR, DE, ES, PT, IT, AU as restricted
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	RestrictPOBoxes,
 
-    /// <summary>
-    /// Marks packstation addresses in DE as restricted
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    RestrictPackstations
+	/// <summary>
+	/// Marks packstation addresses in DE as restricted
+	/// </summary>
+// ReSharper disable once InconsistentNaming
+	RestrictPackstations
 }

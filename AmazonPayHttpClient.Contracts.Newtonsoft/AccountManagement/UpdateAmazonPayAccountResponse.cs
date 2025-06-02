@@ -1,6 +1,6 @@
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class UpdateAmazonPayAccountResponse 
+public sealed class UpdateAmazonPayAccountResponse 
 {
 
 }

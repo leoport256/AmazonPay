@@ -9,12 +9,15 @@ namespace AmazonPayHttpClient.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ChargeInitiator
 {
-    // ReSharper disable once InconsistentNaming
-    CITU,
-    // ReSharper disable once InconsistentNaming
-    MITU,
-    // ReSharper disable once InconsistentNaming
-    CITR,
-    // ReSharper disable once InconsistentNaming
-    MITR
+// ReSharper disable once InconsistentNaming
+	CITU,
+
+// ReSharper disable once InconsistentNaming
+	MITU,
+
+// ReSharper disable once InconsistentNaming
+	CITR,
+
+// ReSharper disable once InconsistentNaming
+	MITR
 }

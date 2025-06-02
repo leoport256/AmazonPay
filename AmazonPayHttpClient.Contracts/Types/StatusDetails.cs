@@ -8,7 +8,7 @@ public sealed class StatusDetails
     /// Current object state.
     /// </summary>
     [JsonPropertyName("state")]
-    public string State { get; set; } = null!;
+    public required string State { get; set; }
 
     /// <summary>
     /// Reason code for current state.

@@ -9,12 +9,12 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum Channel
 {
-    Web,
-    Phone,
-    App,
-    Alexa,
-    PointOfSale,
-    FireTv,
-    Offline,
-    Amazon
+	Web,
+	Phone,
+	App,
+	Alexa,
+	PointOfSale,
+	FireTv,
+	Offline,
+	Amazon
 }

@@ -8,13 +8,13 @@ namespace AmazonPayHttpClient.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum RestrictionType
 {
-    /// <summary>
-    /// 'Allowed' - Mark addresses that don't match restrictions configuration as restricted.
-    /// </summary>
-    Allowed,
+	/// <summary>
+	/// 'Allowed' - Mark addresses that don't match restrictions configuration as restricted.
+	/// </summary>
+	Allowed,
 
-    /// <summary>
-    /// Mark addresses that match restrictions configuration as restricted.
-    /// </summary>
-    NotAllowed
+	/// <summary>
+	/// Mark addresses that match restrictions configuration as restricted.
+	/// </summary>
+	NotAllowed
 }

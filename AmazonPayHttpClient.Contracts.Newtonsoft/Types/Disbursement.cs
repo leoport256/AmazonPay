@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class Disbursement
+public sealed class Disbursement
 {
 	[JsonProperty("sellerId")]
 	public required string SellerId { get; set; }

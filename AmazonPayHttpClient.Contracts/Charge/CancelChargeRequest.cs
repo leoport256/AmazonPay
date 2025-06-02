@@ -4,14 +4,14 @@ namespace AmazonPayHttpClient.Contracts;
 
 public sealed class CancelChargeRequest
 {
-    public CancelChargeRequest(string cancellationReason)
-    {
-        CancellationReason = cancellationReason;
-    }
+	public CancelChargeRequest(string cancellationReason)
+	{
+		CancellationReason = cancellationReason;
+	}
 
-    /// <summary>
-    /// Merchant-provided reason for canceling Charge.
-    /// </summary>
-    [JsonPropertyName("cancellationReason")]
-    public string CancellationReason { get; }
+	/// <summary>
+	/// Merchant-provided reason for canceling Charge.
+	/// </summary>
+	[JsonPropertyName("cancellationReason")]
+	public string CancellationReason { get; }
 }

@@ -50,5 +50,5 @@ public sealed class BuyerResponse
     ///  PrimeMembershipTypes of the buyer, available by allow list only.  If merchant account is not part of allow list, the value will be null.  Empty list is returned if buyer is not eligible for any of the benefits.
     /// </summary>
     [JsonProperty("primeMembershipTypes")]
-    public IList<string> PrimeMembershipTypes { get;  set; }
+    public List<string> PrimeMembershipTypes { get; set; } = [];
 }

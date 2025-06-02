@@ -10,6 +10,6 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 public enum ChargePermissionType
 {
 
-    OneTime,
-    Recurring
+	OneTime,
+	Recurring
 }

@@ -9,8 +9,15 @@ namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum PrimeMembershipType
 {
-    NONE = 0,
-    PRIME_GENERAL = 1,
-    PRIME_STUDENT = 2,
-    PRIME_GENERAL_US = 3
+// ReSharper disable once InconsistentNaming
+	NONE = 0,
+
+// ReSharper disable once InconsistentNaming
+	PRIME_GENERAL = 1,
+
+// ReSharper disable once InconsistentNaming
+	PRIME_STUDENT = 2,
+
+// ReSharper disable once InconsistentNaming
+	PRIME_GENERAL_US = 3
 }

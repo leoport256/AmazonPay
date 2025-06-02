@@ -4,34 +4,32 @@ namespace AmazonPayHttpClient.Contracts;
 
 public sealed class CompleteCheckoutSessionRequest
 {
-    public CompleteCheckoutSessionRequest(decimal amount, Currency currency)
-    {
-        ChargeAmount = new Price(amount, currency);
-        TotalOrderAmount = new Price();
-    }
+	public CompleteCheckoutSessionRequest(decimal amount, Currency currency)
+	{
+		ChargeAmount = new Price(amount, currency);
+	}
 
-    public CompleteCheckoutSessionRequest()
-    {
-        ChargeAmount = new Price();
-        TotalOrderAmount = new Price();
-    }
+	public CompleteCheckoutSessionRequest()
+	{
+		ChargeAmount = new Price();
+	}
 
-    /// <summary>
-    /// The total transaction amount that this CheckoutSession is associated with.
-    /// </summary>
-    [JsonIgnore]
-    public Price ChargeAmount { get;}
-        
-    [JsonPropertyName("chargeAmount")]
-    public Price? ChargeAmountRaw => ChargeAmount.IsEmpty ? null : ChargeAmount;
+	/// <summary>
+	/// The total transaction amount that this CheckoutSession is associated with.
+	/// </summary>
+	[JsonIgnore]
+	public Price ChargeAmount { get; }
+
+	[JsonPropertyName("chargeAmount")]
+	public Price? ChargeAmountRaw => ChargeAmount.IsEmpty ? null : ChargeAmount;
 
 
-    /// <summary>
-    /// Total order amount, only use this parameter if you need to process additional payments after checkout.
-    /// </summary>
-    [JsonIgnore]
-    public Price TotalOrderAmount { get;}
+	/// <summary>
+	/// Total order amount, only use this parameter if you need to process additional payments after checkout.
+	/// </summary>
+	[JsonIgnore]
+	public Price TotalOrderAmount { get; } = new();
 
-    [JsonPropertyName("totalOrderAmount")]
-    public Price? TotalOrderAmountRaw => TotalOrderAmount.IsEmpty ? null : TotalOrderAmount;
+	[JsonPropertyName("totalOrderAmount")]
+	public Price? TotalOrderAmountRaw => TotalOrderAmount.IsEmpty ? null : TotalOrderAmount;
 }

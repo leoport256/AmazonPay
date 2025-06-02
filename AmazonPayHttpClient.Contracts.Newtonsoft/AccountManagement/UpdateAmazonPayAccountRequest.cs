@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class UpdateAmazonPayAccountRequest 
+public sealed class UpdateAmazonPayAccountRequest 
 {
     /// <summary>
     /// Gets or sets the business details.

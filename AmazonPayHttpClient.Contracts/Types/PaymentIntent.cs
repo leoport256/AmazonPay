@@ -8,7 +8,7 @@ namespace AmazonPayHttpClient.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PaymentIntent
 {
-    Confirm,
-    Authorize,
-    AuthorizeWithCapture
+	Confirm,
+	Authorize,
+	AuthorizeWithCapture
 }

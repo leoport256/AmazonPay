@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public class DeliveryTrackerResponse
+public sealed class DeliveryTrackerResponse
 {
 	/// <summary>
 	/// The Amazon Order Reference ID associated with the order for which the shipments need to be tracked.

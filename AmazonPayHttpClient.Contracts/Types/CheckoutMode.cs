@@ -8,5 +8,5 @@ namespace AmazonPayHttpClient.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum CheckoutMode
 {
-    ProcessOrder
+	ProcessOrder
 }

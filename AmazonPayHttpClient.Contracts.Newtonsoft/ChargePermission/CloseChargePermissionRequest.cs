@@ -22,5 +22,5 @@ public sealed class CloseChargePermissionRequest
     /// Default: false.
     /// </remarks>
     [JsonProperty("cancelPendingCharges")]
-    public bool? CancelPendingCharges { get; set; }
+    public bool CancelPendingCharges { get; set; }
 }
