@@ -31,6 +31,18 @@ var client = serviceProvider.GetRequiredService<IUnitedStatesAmazonPayClient>();
 {
 	Console.WriteLine("Getting reports:");
 
+	// using var response = await client.GetReportsWithFailSignature(
+	// 	createdSince: DateTime.UtcNow.AddMonths(-1),
+	// 	createdUntil: DateTime.UtcNow,
+	// 	nextToken: null,
+	// 	pageSize: 10,
+	// 	processingStatuses: [ProcessingStatus.COMPLETED, ProcessingStatus.FAILED],
+	// 	reportTypes:
+	// 	[
+	// 		ReportTypes._GET_FLAT_FILE_OFFAMAZONPAYMENTS_REFUND_DATA_,
+	// 		ReportTypes._GET_FLAT_FILE_OFFAMAZONPAYMENTS_REFUND_DATA_
+	// 	]);
+	
 	using var response = await client.GetReports(
 		createdSince: DateTime.UtcNow.AddMonths(-1),
 		createdUntil: DateTime.UtcNow,
