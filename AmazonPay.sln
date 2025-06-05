@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPayConfigurationKeyPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession", ".samples\dotnet8\Newtonsoft\Refit\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession\AmazonPay.Samples.Dotnet8.Newtonsoft.Refit.InitCheckoutSession.csproj", "{337EE890-F767-4B3D-927C-6B627A960A0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonPay.Samples.Dotnet8.Refit.GetReports", ".samples\dotnet8\Refit\AmazonPay.Samples.Dotnet8.Refit.GetReports\AmazonPay.Samples.Dotnet8.Refit.GetReports.csproj", "{CC1F66FB-7743-4482-971D-7038C30CA671}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{337EE890-F767-4B3D-927C-6B627A960A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{337EE890-F767-4B3D-927C-6B627A960A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{337EE890-F767-4B3D-927C-6B627A960A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1F66FB-7743-4482-971D-7038C30CA671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1F66FB-7743-4482-971D-7038C30CA671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1F66FB-7743-4482-971D-7038C30CA671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1F66FB-7743-4482-971D-7038C30CA671}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F3538D94-0506-4636-9820-8D41AD261E51} = {C4CDF4E3-88FB-45CF-B6A5-7D675A1C028C}
@@ -115,5 +121,6 @@ Global
 		{1FB244AF-2BFD-48F4-9FE0-BF9B6FD6F498} = {FC68A264-00CB-4824-AA39-68C1367675C6}
 		{8783DB9B-F96C-4CF6-BC70-8C68497A1231} = {FC68A264-00CB-4824-AA39-68C1367675C6}
 		{337EE890-F767-4B3D-927C-6B627A960A0D} = {DFEE733A-ECB0-4EDB-9533-7C125DD5D7EE}
+		{CC1F66FB-7743-4482-971D-7038C30CA671} = {1A6A5B40-8F2C-434B-87C2-6E6CE122D995}
 	EndGlobalSection
 EndGlobal
