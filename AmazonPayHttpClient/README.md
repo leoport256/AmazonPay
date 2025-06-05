@@ -4,7 +4,7 @@
 AmazonPayLib is a package used for access Amazon Pay Onetime checkout V2
 https://developer.amazon.com/docs/amazon-pay/intro.html through HttpClient 
 
-No additional dependency
+No additional dependencies is required.
 
 
 ## Basic usage
@@ -17,16 +17,17 @@ You should inherit from it and realize.
 IPrivateKeyProvider interface retrieve your own private key.
 You should inherit from it and realize.
 
+**Important:** If you use methods with query parameters like GetReports you should pass query parameters sorted alphabetically. 
 
 ## Use with clear HttpClient
 
-Install nuget pacjage AmazonPayHttpClient
+Install nuget package AmazonPayHttpClient
 
 Make inheritance from IPrivateKeyProvider IPublicKeyProvider
 
 
 ### Use with serviceCollection
-Just call AddAmazonPay Extension, and configure your HttpClient by  calling
+Just call AddAmazonPay-extension, and configure your HttpClient by  calling
 ConfigureAmazonPayFor* methods
 
 ConfigureAmazonPayForUnitedStates
@@ -42,14 +43,13 @@ Just call
 AmazonHttpClientFactory.CreateForUnitedStates,
 AmazonHttpClientFactory.CreateForJapan,
 AmazonHttpClientFactory.CreateForEurope
-
 methods
 
-## payload signing
+## Payload signing
 
-Ones initializing amazon pay on frontend you should send payload and signing to amazon.
+Ones initializing amazon pay on frontend you should send payload and sign to amazon.
 
-Use ISignatureClient interface for it. It added by Add HttpClient to ServiceCollection
+Use ISignatureClient interface for it. It is added by AddHttpClient to ServiceCollection
 or you can create it by call SignatureClientFactory.Create
 
 
@@ -66,7 +66,7 @@ AmazonPayClient.ForEurope,
 AmazonPayClient.ForJapan,
 AmazonPayClient.ForUnitedStates
 
-## Newtosoft  serialzation
+## Newtosoft  serialization
 
 nuget package  AmazonPayHttpClient.Refit.Newtonsoft contains interface for Refit that use Newtonsoft.Json.
 nuget package AmazonPayHttpClient.Contracts.Newtonsoft contains class marked for use with Newtosoft.Json
