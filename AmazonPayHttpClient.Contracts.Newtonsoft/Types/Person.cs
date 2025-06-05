@@ -15,7 +15,7 @@ public sealed class Person
 	/// <summary>
 	/// Gets or sets the residential address.
 	/// </summary>
-	[System.Text.Json.Serialization.JsonIgnore]
+	[JsonIgnore]
 	public AddressInfo ResidentialAddress { get; set; } = new();
 
 

@@ -62,7 +62,7 @@ public sealed class FinalizeCheckoutSessionRequest
 	/// <summary>
 	/// Gets or sets total order amount.
 	/// </summary>
-	[System.Text.Json.Serialization.JsonIgnore]
+	[JsonIgnore]
 	public Price TotalOrderAmount { get; } = new();
 
 	[JsonProperty("totalOrderAmount")]
