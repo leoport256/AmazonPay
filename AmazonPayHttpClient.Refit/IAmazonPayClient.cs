@@ -70,23 +70,24 @@ public interface IAmazonPayClient
 	
 	[Get("/v2/reports")]
 	Task<ApiResponse<GetReportsResponse>> GetReports(
-		[Query(CollectionFormat.Csv)][AliasAs("reportTypes")]ReportTypes[]? reportTypes = null, 
-		[Query(CollectionFormat.Csv)][AliasAs("processingStatuses")]ProcessingStatus[]? processingStatuses = null,
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdSince")]DateTime? createdSince = null, 
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("createdUntil")]DateTime? createdUntil = null,
+		[Query][AliasAs("nextToken")]string? nextToken = null,
 		[Query][AliasAs("pageSize")]int pageSize = 10, 
-		[Query][AliasAs("nextToken")]string? nextToken = null);
+		[Query(CollectionFormat.Csv)][AliasAs("processingStatuses")]ProcessingStatus[]? processingStatuses = null,
+		[Query(CollectionFormat.Csv)][AliasAs("reportTypes")]ReportTypes[]? reportTypes = null);
 
 	[Get("/v2/report-schedules")]
 	Task<ApiResponse<GetReportSchedulesResponse>> GetReportSchedules(
 		[Query(CollectionFormat.Csv)] [AliasAs("reportTypes")] ReportTypes[]? reportTypes = null);
 	
 	[Get("/v2/disbursements")]
-	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements(		
-		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("startTime")]DateTime? startTime = null, 
+	Task<ApiResponse<GetDisbursementsResponse>> GetDisbursements(
 		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("endTime")]DateTime? endTime = null,
+		[Query][AliasAs("nextToken")]string? nextToken = null,
 		[Query][AliasAs("pageSize")]int pageSize = 10, 
-		[Query][AliasAs("nextToken")]string? nextToken = null);	
+		[Query(Format = AmazonDateTimeFormat.Format)][AliasAs("startTime")]DateTime? startTime = null
+		);	
 
 	
 	[Get("/v2/report/{id}")]
@@ -111,13 +112,10 @@ public interface IAmazonPayClient
 	
 	[Post("/v2/merchantAccounts")]
 	Task<ApiResponse<RegisterAmazonPayAccountResponse>> RegisterAmazonPayAccount(RegisterAmazonPayAccountRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
-
 	
 	[Patch("/v2/merchantAccounts/{merchantAccountId}")]
 	Task<ApiResponse<UpdateAmazonPayAccountResponse>> UpdateAmazonPayAccount(string merchantAccountId, UpdateAmazonPayAccountRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
 
 	[Delete("/v2/merchantAccounts/{merchantAccountId}")]
 	Task<ApiResponse<DeleteAmazonPayAccountResponse>> DeleteAmazonPayAccount(string merchantAccountId, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
-
-	
 }
