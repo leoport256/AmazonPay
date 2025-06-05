@@ -15,7 +15,8 @@ internal sealed partial class SignatureBuilder
 		builder.Append(_method).
 			Append(LineSeparator).
 			Append(_url.AbsolutePath).
-			Append(LineSeparator).
+			Append(LineSeparator);
+		AppendQueryString(builder, _url).
 			Append(LineSeparator);
 		
 		AppendHeaders(builder, _headerKeys, _headerValues).
@@ -41,5 +42,16 @@ internal sealed partial class SignatureBuilder
 			Append(_joinedHeaderKeys);
 
 		return builder;
+	}
+	
+	private StringBuilder AppendQueryString(StringBuilder builder, Uri url)
+	{
+		if (url.Query.Length <= 1)
+		{
+			return builder;
+		}
+
+		var query = url.Query[1..];
+		return builder.Append(query);
 	}
 }
