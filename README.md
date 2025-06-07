@@ -57,7 +57,7 @@ or you can create it by call SignatureClientFactory.Create
 
 nuget package AmazonPayHttpClient.Contracts contains classes that marked for use with System.Text.json
 
-## Refit интерфейс
+## Refit
 nuget package AmazonPayHttpClient.Refit contains interface for Refit.
 
 Call AddAmazonPayRefitClientFor* extension or create it directly
