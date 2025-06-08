@@ -1,6 +1,6 @@
 ﻿namespace AmazonPayHttpClient;
 
-public class AmazonPayIdempotencyMiddleware: DelegatingHandler
+public sealed class AmazonPayIdempotencyMiddleware: DelegatingHandler
 {
 	private const string IdempotencyKeyHeader    = "x-amz-pay-idempotency-key";
 

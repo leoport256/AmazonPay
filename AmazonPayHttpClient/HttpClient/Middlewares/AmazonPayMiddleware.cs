@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient;
 
-public class AmazonPayMiddleware: DelegatingHandler
+public sealed class AmazonPayMiddleware: DelegatingHandler
 {
 	private const string SdkVersion = "2.6.0.0";
 	private const string SdkName    = "amazon-pay-api-sdk-dotnet";

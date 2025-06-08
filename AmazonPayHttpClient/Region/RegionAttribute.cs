@@ -1,7 +1,7 @@
 namespace AmazonPayHttpClient;
 
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)] 
-public class RegionAttribute : Attribute
+public sealed class RegionAttribute : Attribute
 {
     public RegionAttribute(string shortform, string domain, string url)
     {

@@ -1,6 +1,6 @@
 ﻿namespace AmazonPayHttpClient;
 
-public class AmazonPayPrepareContentMiddleware: DelegatingHandler
+public sealed class AmazonPayPrepareContentMiddleware: DelegatingHandler
 {
 	public AmazonPayPrepareContentMiddleware(){
 		
