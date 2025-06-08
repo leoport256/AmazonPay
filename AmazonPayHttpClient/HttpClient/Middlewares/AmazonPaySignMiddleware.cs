@@ -2,11 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 
-[assembly: InternalsVisibleTo("AmazonPayHttpClient.Tests")]
-
 namespace AmazonPayHttpClient;
 
-public class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: DelegatingHandler
+public sealed class AmazonPaySignMiddleware<TPrivateKeyProvider, TPublicKeyProvider>: DelegatingHandler
 	where TPrivateKeyProvider : class, IPrivateKeyProvider
 	where TPublicKeyProvider: class, IPublicKeyProvider
 
