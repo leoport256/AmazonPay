@@ -13,7 +13,7 @@
         <PackageProjectUrl>https://github.com/leoport256/AmazonPay</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <Version>2.0.0</Version>
+        <Version>2.1.0</Version>
         <PackageTags>.NET8.0 .NET9.0</PackageTags>
 
     </PropertyGroup>
