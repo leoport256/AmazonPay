@@ -2,19 +2,19 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public sealed class ChargeResponse
+public sealed class Charge
 {
     /// <summary>
     /// Charge identifer.
     /// </summary>
     [JsonProperty("chargeId")]
-    public string ChargeId { get; set; } = null!;
+    public required string ChargeId { get; set; }
 
     /// <summary>
     /// Charge Permission identifer.
     /// </summary>
     [JsonProperty("chargePermissionId")]
-    public string ChargePermissionId { get; set; } = null!;
+    public required string ChargePermissionId { get; set; }
 
     /// <summary>
     /// Represents the amount to be charged/authorized.
@@ -81,7 +81,7 @@ public sealed class ChargeResponse
     /// State of the Charge object.
     /// </summary>
     [JsonProperty("statusDetails")]
-    public StatusDetails StatusDetails { get; set; } = null!;
+    public StatusDetails? StatusDetails { get; set; }
 
     /// <summary>
     /// The amount captured in disbursement currency. This is calculated using: chargeAmount/conversionRate.

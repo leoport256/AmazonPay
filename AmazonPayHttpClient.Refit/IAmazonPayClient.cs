@@ -7,23 +7,23 @@ namespace AmazonPayHttpClient.Refit;
 public interface IAmazonPayClient
 {
 	[Get("/v2/checkoutSessions/{checkoutSessionId}")]
-	Task<ApiResponse<CheckoutSessionResponse>> GetCheckoutSession(string checkoutSessionId, 
+	Task<ApiResponse<CheckoutSession>> GetCheckoutSession(string checkoutSessionId, 
 		[Header("x-amz-pay-simulation-code")]string? sandboxSimulationCode = null);
 
 	[Patch("/v2/checkoutSessions/{checkoutSessionId}")]
-	Task<ApiResponse<CheckoutSessionResponse>> UpdateCheckoutSession(
+	Task<ApiResponse<CheckoutSession>> UpdateCheckoutSession(
 		string checkoutSessionId,
 		UpdateCheckoutSessionRequest request);
 	
 
 	[Post("/v2/checkoutSessions/{checkoutSessionId}/complete")]
-	Task<ApiResponse<CheckoutSessionResponse>> CompleteCheckoutSession(
+	Task<ApiResponse<CheckoutSession>> CompleteCheckoutSession(
 		string checkoutSessionId,
 		CompleteCheckoutSessionRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
 	
 		
 	[Post("/v2/checkoutSessions/{checkoutSessionId}/finalize")]
-	Task<ApiResponse<CheckoutSessionResponse>> FinalizeCheckoutSessionRequest(string checkoutSessionId, FinalizeCheckoutSessionRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+	Task<ApiResponse<CheckoutSession>> FinalizeCheckoutSessionRequest(string checkoutSessionId, FinalizeCheckoutSessionRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
 
 
 	
@@ -37,32 +37,32 @@ public interface IAmazonPayClient
 	);
 	
 	[Get("/v2/charges/{chargeId}")]
-	Task<ApiResponse<ChargeResponse>> GetCharge(string chargeId);
+	Task<ApiResponse<Charge>> GetCharge(string chargeId);
 	
 	[Post("/v2/charges/")]
-	Task<ApiResponse<ChargeResponse>> CreateCharge(
+	Task<ApiResponse<Charge>> CreateCharge(
 		CreateChargeRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null, 
 		[Header("x-amz-pay-simulation-code")]string? sandboxSimulationCode = null);
 	
 	[Post("/v2/charges/{chargeId}/capture")]
-	Task<ApiResponse<ChargeResponse>> CaptureCharge(
+	Task<ApiResponse<Charge>> CaptureCharge(
 		string chargeId,
 		CaptureChargeRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null, 
 		[Header("x-amz-pay-simulation-code")]string? sandboxSimulationCode = null);
 	
 	[Delete("/v2/charges/{chargeId}/cancel")]
-	Task<ApiResponse<ChargeResponse>> CancelCharge(
+	Task<ApiResponse<Charge>> CancelCharge(
 		string chargeId,
 		[Body]CancelChargeRequest request
 		);
 	
 	[Post("/v2/refunds")]
-	Task<ApiResponse<RefundResponse>> CreateRefund(
+	Task<ApiResponse<Refund>> CreateRefund(
 		CreateRefundRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null, 
 		[Header("x-amz-pay-simulation-code")]string? sandboxSimulationCode = null);	
 
 	[Get("/v2/refunds/{refundId}")]
-	Task<ApiResponse<RefundResponse>> GetRefund(string refundId);	
+	Task<ApiResponse<Refund>> GetRefund(string refundId);	
 
 	[Post("/v2/deliveryTrackers")]
 	Task<ApiResponse<DeliveryTrackerResponse>> CreateDeliveryTracker(DeliveryTrackerRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
@@ -117,5 +117,17 @@ public interface IAmazonPayClient
 	Task<ApiResponse<UpdateAmazonPayAccountResponse>> UpdateAmazonPayAccount(string merchantAccountId, UpdateAmazonPayAccountRequest request, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
 
 	[Delete("/v2/merchantAccounts/{merchantAccountId}")]
-	Task<ApiResponse<DeleteAmazonPayAccountResponse>> DeleteAmazonPayAccount(string merchantAccountId, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);	
+	Task<ApiResponse<DeleteAmazonPayAccountResponse>> DeleteAmazonPayAccount(string merchantAccountId, [Header("x-amz-pay-idempotency-key")]string? idempotencyKey = null);
+	
+	/// <summary>
+	/// Get buyer details.
+	/// </summary>
+	/// <param name="buyerToken">Token used to retrieve buyer details. This value is appended as a query parameter to signInReturnUrl.</param>
+	/// <returns>Object with buyer details.</returns>
+	/// <remarks>
+	/// Get Buyer will only return buyerId by default. You must explicitly request access to additional buyer details using the button signInScopes parameter.
+	/// Amazon Pay will only provide the token required to retrieve buyer details after the buyer signs in. It will be appended to the signInReturnUrl as a query parameter and expires after 24 hours.
+	/// </remarks>
+	[Get("/v2/buyers/{buyerToken}")]
+	Task<ApiResponse<BuyerResponse>> GetBuyer(string buyerToken);
 }

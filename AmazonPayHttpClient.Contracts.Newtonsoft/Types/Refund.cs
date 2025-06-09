@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public sealed class RefundResponse
+public sealed class Refund
 {
 	/// <summary>
 	/// Refund identifier.

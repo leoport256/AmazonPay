@@ -8,7 +8,7 @@ public sealed class ChargePermissionStatusDetails
 	/// Current object state.
 	/// </summary>
 	[JsonProperty("state")]
-	public string State { get; set; } = null!;
+	public required string State { get; set; }
 
 	/// <summary>
 	/// List of reasons for current state

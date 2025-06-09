@@ -2,13 +2,13 @@ using Newtonsoft.Json;
 
 namespace AmazonPayHttpClient.Contracts.Newtonsoft;
 
-public sealed class ChargePermissionResponse
+public sealed class ChargePermission
 {
     /// <summary>
     /// Charge Permission identifer.
     /// </summary>
     [JsonProperty("chargePermissionId")]
-    public string ChargePermissionId { get; set; } = null!;
+    public required  string ChargePermissionId { get; set; }
 
     /// <summary>
     /// Limits that apply to this ChargePermission.
@@ -75,7 +75,7 @@ public sealed class ChargePermissionResponse
     /// State of the Charge Permission object.
     /// </summary>
     [JsonProperty("statusDetails")]
-    public ChargePermissionStatusDetails StatusDetails { get; set; } = null!;
+    public ChargePermissionStatusDetails? StatusDetails { get; set; }
 
     /// <summary>
     /// The currency that the buyer will be charged in ISO 4217 format.

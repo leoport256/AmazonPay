@@ -2,7 +2,7 @@
 
 namespace AmazonPayHttpClient.Contracts;
 
-public sealed class ChargeResponse
+public sealed class Charge
 {
 	/// <summary>
 	/// Charge identifer.
@@ -81,7 +81,7 @@ public sealed class ChargeResponse
 	/// State of the Charge object.
 	/// </summary>
 	[JsonPropertyName("statusDetails")]
-	public StatusDetails StatusDetails { get; set; } = null!;
+	public StatusDetails? StatusDetails { get; set; }
 
 	/// <summary>
 	/// The amount captured in disbursement currency. This is calculated using: chargeAmount/conversionRate.
