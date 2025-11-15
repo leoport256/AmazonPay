@@ -12,9 +12,9 @@
         <Description>Refit interface for AmazonPayHttpClient nuget-package.</Description>
         <PackageProjectUrl>https://github.com/leoport256/AmazonPay</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <Version>2.1.0</Version>
-        <PackageTags>.NET8.0 .NET9.0</PackageTags>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <Version>3.0.0</Version>
+        <PackageTags>.NET8.0 .NET9.0 .NET10.0</PackageTags>
 
     </PropertyGroup>
     <ItemGroup  Condition="'$(TargetFramework)'=='net8.0'">
@@ -26,6 +26,11 @@
         <PackageReference Include="Refit" Version="8.0.0" />
         <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
         <PackageReference Include="System.Text.Json" Version="9.0.5" />
+    </ItemGroup>
+    <ItemGroup  Condition="'$(TargetFramework)'=='net10.0'">
+        <PackageReference Include="Refit" Version="8.0.0" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
+        <PackageReference Include="System.Text.Json" Version="10.0.0" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\AmazonPayHttpClient.Contracts\AmazonPayHttpClient.Contracts.csproj" />
